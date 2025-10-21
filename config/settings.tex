@@ -98,7 +98,9 @@
     justification=centering,
     labelsep=endash,
     singlelinecheck=false,
-    format=plain
+    skip=0pt,  % межстрочный интервал 1.0 (обычный)
+    belowskip=0pt,
+    aboveskip=0pt
 }
 
 \captionsetup[table]{
@@ -112,6 +114,10 @@
 % Переопределяем формат подписей для соответствия ГОСТу
 \renewcommand{\figurename}{Рисунок}
 \renewcommand{\tablename}{Таблица}
+
+% Настройка формата подписи к рисунку по ГОСТ 7.32-2017
+\DeclareCaptionFormat{gostfigure}{#1#2 — #3}
+\captionsetup[figure]{format=gostfigure}
 
 % Настройки списков рисунков и таблиц
 \renewcommand{\listfigurename}{СПИСОК ИЛЛЮСТРАЦИЙ}
