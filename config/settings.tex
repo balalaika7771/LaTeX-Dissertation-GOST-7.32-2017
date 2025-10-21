@@ -86,20 +86,26 @@
 \renewcommand{\thetable}{\arabic{table}}
 \renewcommand{\theequation}{\arabic{equation}}
 
-% Настройки подписей к рисункам и таблицам
+% Настройки подписей к рисункам и таблицам по ГОСТ 7.32-2017
 \captionsetup[figure]{
     font=small,
     justification=centering,
     labelsep=endash,
-    singlelinecheck=false
+    singlelinecheck=false,
+    format=plain
 }
 
 \captionsetup[table]{
     font=small,
-    justification=centering,
+    justification=raggedright,
     labelsep=endash,
-    singlelinecheck=false
+    singlelinecheck=false,
+    format=plain
 }
+
+% Переопределяем формат подписей для соответствия ГОСТу
+\renewcommand{\figurename}{Рисунок}
+\renewcommand{\tablename}{Таблица}
 
 % Настройки списков рисунков и таблиц
 \renewcommand{\listfigurename}{СПИСОК ИЛЛЮСТРАЦИЙ}
