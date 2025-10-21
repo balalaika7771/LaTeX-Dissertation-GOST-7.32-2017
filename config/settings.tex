@@ -51,6 +51,12 @@
 % Настройки библиографии
 \addbibresource{bibliography/references.bib}
 
+% Настройки стиля библиографии по ГОСТ 7.32-2017
+\DeclareFieldFormat{labelnumberwidth}{#1.}
+\setlength{\biblabelsep}{0.5em}
+\renewcommand*{\bibfont}{\small}
+\setlength{\bibhang}{1.25cm} % абзацный отступ по ГОСТу
+
 % Настройки гиперссылок
 \hypersetup{
     colorlinks=true,
