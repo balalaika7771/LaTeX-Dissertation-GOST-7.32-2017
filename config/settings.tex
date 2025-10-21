@@ -96,7 +96,6 @@
 \captionsetup[figure]{
     font=small,
     justification=centering,
-    labelsep=endash,
     singlelinecheck=false,
     skip=0pt,  % межстрочный интервал 1.0 (обычный)
     belowskip=0pt,
@@ -106,9 +105,10 @@
 \captionsetup[table]{
     font=small,
     justification=raggedright,
-    labelsep=endash,
     singlelinecheck=false,
-    format=plain
+    skip=0pt,
+    belowskip=0pt,
+    aboveskip=0pt
 }
 
 % Переопределяем формат подписей для соответствия ГОСТу
@@ -118,6 +118,10 @@
 % Настройка формата подписи к рисунку по ГОСТ 7.32-2017
 \DeclareCaptionFormat{gostfigure}{#1#2 — #3}
 \captionsetup[figure]{format=gostfigure}
+
+% Настройка формата подписи к таблице по ГОСТ 7.32-2017
+\DeclareCaptionFormat{gosttable}{#1#2 — #3}
+\captionsetup[table]{format=gosttable}
 
 % Настройки списков рисунков и таблиц
 \renewcommand{\listfigurename}{СПИСОК ИЛЛЮСТРАЦИЙ}

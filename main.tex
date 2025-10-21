@@ -12,6 +12,8 @@
 % Титульный лист
 \input{title/title}
 
+% Список исполнителей (обязательно по ГОСТ 7.32-2017)
+\input{executors/executors}
 
 % Реферат (обязательно по ГОСТ 7.32-2017)
 \input{abstract/abstract}
@@ -19,6 +21,12 @@
 % Оглавление по ГОСТу
 \tableofcontents
 \newpage
+
+% Термины и определения (по усмотрению исполнителя НИР)
+\input{terms/terms}
+
+% Перечень сокращений и обозначений (по усмотрению)
+\input{abbreviations/abbreviations}
 
 % Введение
 \input{chapters/introduction}
@@ -35,9 +43,6 @@
 % Список использованных источников по ГОСТу
 \printbibliography[title=СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ]
 \addcontentsline{toc}{chapter}{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}
-
-% Перечень условных обозначений, сокращений, терминов (по усмотрению)
-\input{abbreviations/abbreviations}
 
 % Приложения
 \appendix
