@@ -1,0 +1,46 @@
+\documentclass[14pt,a4paper]{extreport}
+
+% Подключение пакетов
+\input{config/packages}
+
+% Настройки документа
+\input{config/settings}
+
+% Начало документа
+\begin{document}
+
+% Титульный лист
+\input{title/title}
+
+
+% Реферат (обязательно по ГОСТ 7.32-2017)
+\input{abstract/abstract}
+
+% Оглавление по ГОСТу
+\tableofcontents
+\newpage
+
+% Введение
+\input{chapters/introduction}
+
+% Основная часть
+\input{chapters/chapter1}
+\input{chapters/chapter2}
+\input{chapters/chapter3}
+\input{chapters/chapter4}
+
+% Заключение
+\input{chapters/conclusion}
+
+% Список использованных источников по ГОСТу
+\printbibliography[title=СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ]
+
+% Перечень условных обозначений, сокращений, терминов (по усмотрению)
+\input{abbreviations/abbreviations}
+
+% Приложения
+\appendix
+\input{appendix/appendix1}
+\input{appendix/appendix2}
+
+\end{document}

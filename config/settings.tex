@@ -1,0 +1,110 @@
+% Настройки страницы по ГОСТ Р 7.0.11-2011 и ГОСТ 7.32-2017
+\geometry{
+    left=30mm,
+    right=15mm,
+    top=20mm,
+    bottom=20mm
+}
+
+% Межстрочный интервал 1.5 по ГОСТу
+\onehalfspacing
+
+% Отступ первой строки абзаца 1.25 см по ГОСТу
+\setlength{\parindent}{1.25cm}
+
+% Настройки шрифтов по ГОСТу для pdfLaTeX
+\usepackage{times}
+
+% Настройки заголовков по ГОСТу 7.32-2017
+\titleformat{\chapter}[display]
+{\normalfont\bfseries\centering}
+{\chaptertitlename\ \thechapter}{20pt}{\Large}
+
+\titleformat{\section}
+{\normalfont\bfseries}
+{\thesection}{1em}{}
+
+\titleformat{\subsection}
+{\normalfont\bfseries}
+{\thesubsection}{1em}{}
+
+% Настройки оглавления по ГОСТу 7.32-2017
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
+
+% Настройки отступов в оглавлении
+\renewcommand{\cftchapindent}{0pt}
+\renewcommand{\cftsecindent}{0pt}
+\renewcommand{\cftsubsecindent}{0pt}
+
+% Настройки шрифтов в оглавлении
+\renewcommand{\cftchapfont}{\bfseries}
+\renewcommand{\cftsecfont}{\normalfont}
+\renewcommand{\cftsubsecfont}{\normalfont}
+
+% Настройки отступов между элементами
+\setlength{\cftbeforechapskip}{0pt}
+\setlength{\cftbeforesecskip}{0pt}
+\setlength{\cftbeforesubsecskip}{0pt}
+
+% Настройки библиографии
+\addbibresource{bibliography/references.bib}
+
+% Настройки гиперссылок
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=blue,
+    citecolor=black,
+    bookmarksnumbered=true,
+    bookmarksopen=true,
+    pdfstartview=FitH
+}
+
+% Настройки листингов кода
+\lstset{
+    basicstyle=\small\ttfamily,
+    breaklines=true,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny,
+    stepnumber=1,
+    numbersep=5pt,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    captionpos=b,
+    commentstyle=\color{gray},
+    keywordstyle=\color{blue},
+    stringstyle=\color{red}
+}
+
+% Настройки нумерации по ГОСТу 7.32-2017
+\renewcommand{\thefigure}{\arabic{figure}}
+\renewcommand{\thetable}{\arabic{table}}
+\renewcommand{\theequation}{\arabic{equation}}
+
+% Настройки подписей к рисункам и таблицам
+\captionsetup[figure]{
+    font=small,
+    justification=centering,
+    labelsep=endash,
+    singlelinecheck=false
+}
+
+\captionsetup[table]{
+    font=small,
+    justification=centering,
+    labelsep=endash,
+    singlelinecheck=false
+}
+
+% Настройки списков рисунков и таблиц
+\renewcommand{\listfigurename}{СПИСОК ИЛЛЮСТРАЦИЙ}
+\renewcommand{\listtablename}{СПИСОК ТАБЛИЦ}
+
+% Настройки приложений
+\renewcommand{\appendixname}{Приложение}
+\renewcommand{\appendixpagename}{Приложения}

@@ -1,0 +1,46 @@
+# LaTeX временные файлы
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.toc
+*.lof
+*.lot
+*.lol
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+*.loa
+*.maf
+*.mtc
+*.mtc1
+*.nav
+*.nlo
+*.nls
+*.snm
+*.synctex.gz
+*.tdo
+*.vrb
+*.xdy
+
+# Папка сборки
+build/
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+
+# IDE файлы
+.idea/
+*.swp
+*.swo
+*~
