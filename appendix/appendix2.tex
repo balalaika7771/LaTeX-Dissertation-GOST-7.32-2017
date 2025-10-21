@@ -123,9 +123,33 @@ result = calculate_sum(5, 3)
 print(f"Sum: {result}")
 \end{lstlisting}
 
+\subsection{Ультимативный способ описания кода}
+
+\begin{lstlisting}[style=code, language=Python, caption={Пример Python кода с улучшенной подсветкой}, label={lst:python_enhanced}]
+def calculate_sum(a, b):
+    """Calculate sum of two numbers"""
+    return a + b
+
+# Example usage
+result = calculate_sum(5, 3)
+print(f"Sum: {result}")
+\end{lstlisting}
+
+\subsection{Листинг с улучшенным переносом (fvextra)}
+
+\begin{CodeBreakable}
+def calculate_sum(a, b):
+    """Calculate sum of two numbers"""
+    return a + b
+
+# Example usage
+result = calculate_sum(5, 3)
+print(f"Sum: {result}")
+\end{CodeBreakable}
+
 \subsection{Длинный листинг с переносом}
 
-\begin{lstlisting}[language=Python, caption={Пример алгоритма машинного обучения}, label={lst:ml_algorithm}, style=breakable]
+\begin{lstlisting}[style=code, language=Python, caption={Пример алгоритма машинного обучения с улучшенной подсветкой}, label={lst:ml_algorithm_enhanced}]
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split, cross_val_score
@@ -246,6 +270,74 @@ def main():
 
 if __name__ == "__main__":
     main()
+\end{lstlisting}
+
+\subsection{Примеры с разными языками программирования}
+
+\subsubsection{Java код}
+
+\begin{lstlisting}[style=code, language=Java, caption={Пример Java класса}, label={lst:java_example}]
+public class Calculator {
+    private double result;
+    
+    public Calculator() {
+        this.result = 0.0;
+    }
+    
+    public double add(double a, double b) {
+        result = a + b;
+        return result;
+    }
+    
+    public double multiply(double a, double b) {
+        result = a * b;
+        return result;
+    }
+    
+    public double getResult() {
+        return result;
+    }
+}
+\end{lstlisting}
+
+\subsubsection{C++ код}
+
+\begin{lstlisting}[style=code, language=C++, caption={Пример C++ класса}, label={lst:cpp_example}]
+#include <iostream>
+#include <vector>
+
+class Matrix {
+private:
+    std::vector<std::vector<double>> data;
+    int rows, cols;
+    
+public:
+    Matrix(int r, int c) : rows(r), cols(c) {
+        data.resize(rows, std::vector<double>(cols, 0.0));
+    }
+    
+    void setValue(int row, int col, double value) {
+        if (row >= 0 && row < rows && col >= 0 && col < cols) {
+            data[row][col] = value;
+        }
+    }
+    
+    double getValue(int row, int col) const {
+        if (row >= 0 && row < rows && col >= 0 && col < cols) {
+            return data[row][col];
+        }
+        return 0.0;
+    }
+    
+    void print() const {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                std::cout << data[i][j] << " ";
+            }
+            std::cout << std::endl;
+        }
+    }
+};
 \end{lstlisting}
 
 \section{Примеры примечаний}

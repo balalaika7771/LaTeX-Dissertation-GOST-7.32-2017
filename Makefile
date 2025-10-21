@@ -15,15 +15,15 @@ all: $(BUILD_DIR)/$(MAIN).pdf
 
 $(BUILD_DIR)/$(MAIN).pdf: $(MAIN).tex
 	@mkdir -p $(BUILD_DIR)
-	$(LATEX) -output-directory=$(BUILD_DIR) $(MAIN).tex
+	$(LATEX) -shell-escape -output-directory=$(BUILD_DIR) $(MAIN).tex
 	$(BIBTEX) $(BUILD_DIR)/$(MAIN)
-	$(LATEX) -output-directory=$(BUILD_DIR) $(MAIN).tex
-	$(LATEX) -output-directory=$(BUILD_DIR) $(MAIN).tex
+	$(LATEX) -shell-escape -output-directory=$(BUILD_DIR) $(MAIN).tex
+	$(LATEX) -shell-escape -output-directory=$(BUILD_DIR) $(MAIN).tex
 
 # Быстрая компиляция (без библиографии)
 quick: $(MAIN).tex
 	@mkdir -p $(BUILD_DIR)
-	$(LATEX) -output-directory=$(BUILD_DIR) $(MAIN).tex
+	$(LATEX) -shell-escape -output-directory=$(BUILD_DIR) $(MAIN).tex
 
 # Просмотр PDF
 view: $(BUILD_DIR)/$(MAIN).pdf
