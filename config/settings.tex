@@ -99,7 +99,8 @@
     singlelinecheck=false,
     skip=0pt,  % межстрочный интервал 1.0 (обычный)
     belowskip=0pt,
-    aboveskip=0pt
+    aboveskip=0pt,
+    hypcap=false  % запрет переноса слов в подписях к рисункам
 }
 
 \captionsetup[table]{
@@ -108,7 +109,8 @@
     singlelinecheck=false,
     skip=0pt,
     belowskip=0pt,
-    aboveskip=0pt
+    aboveskip=0pt,
+    hypcap=false  % запрет переноса слов в подписях к таблицам
 }
 
 % Переопределяем формат подписей для соответствия ГОСТу
@@ -122,6 +124,39 @@
 % Настройка формата подписи к таблице по ГОСТ 7.32-2017
 \DeclareCaptionFormat{gosttable}{#1#2 — #3}
 \captionsetup[table]{format=gosttable}
+
+% Настройка переноса таблиц с заголовком "Продолжение таблицы X"
+\usepackage{longtable}
+\usepackage{ltxtable}
+
+% Команда для создания продолжения таблицы
+\newcommand{\tablecontinuation}[1]{%
+    \multicolumn{1}{c}{\textbf{Продолжение таблицы #1}}%
+}
+
+% Настройка переноса листингов кода
+\usepackage{fancyvrb}
+\usepackage{listings}
+
+% Команда для создания продолжения листинга
+\newcommand{\listingcontinuation}[1]{%
+    \textbf{Продолжение листинга #1}%
+}
+
+% Настройки примечаний согласно ГОСТ 7.32-2017
+\newcommand{\note}[1]{%
+    \par\noindent\textbf{Примечание} — #1%
+}
+
+\newcommand{\notes}[1]{%
+    \par\noindent\textbf{Примечания:}%
+    \begin{enumerate}
+        #1
+    \end{enumerate}%
+}
+
+% Настройка межстрочного интервала для многострочных подписей
+\captionsetup[table]{format=gosttable,skip=6pt}  % межстрочный интервал 1.0
 
 % Настройки списков рисунков и таблиц
 \renewcommand{\listfigurename}{СПИСОК ИЛЛЮСТРАЦИЙ}

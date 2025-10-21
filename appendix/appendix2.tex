@@ -73,3 +73,71 @@
 \end{tabular}
 \label{tab:statistics}
 \end{table}
+
+\note{Все значения округлены до двух знаков после запятой.}
+
+\section{Примеры переноса таблиц и листингов}
+
+\subsection{Перенос таблицы}
+
+\begin{longtable}{|l|c|c|c|}
+\caption{Длинная таблица с переносом страниц} \label{tab:long_table} \\
+\hline
+\textbf{№} & \textbf{Параметр} & \textbf{Значение} & \textbf{Результат} \\
+\hline
+\endfirsthead
+
+\tablecontinuation{1} \\
+\hline
+\textbf{№} & \textbf{Параметр} & \textbf{Значение} & \textbf{Результат} \\
+\hline
+\endhead
+
+\hline
+\endfoot
+
+\hline
+\endlastfoot
+
+1 & A1 & 0.1 & 0.95 \\
+2 & A2 & 0.2 & 0.87 \\
+3 & A3 & 0.3 & 0.92 \\
+4 & B1 & 0.4 & 0.88 \\
+5 & B2 & 0.5 & 0.91 \\
+6 & B3 & 0.6 & 0.89 \\
+7 & C1 & 0.7 & 0.93 \\
+8 & C2 & 0.8 & 0.86 \\
+9 & C3 & 0.9 & 0.94 \\
+10 & D1 & 1.0 & 0.90 \\
+\end{longtable}
+
+\subsection{Пример листинга кода}
+
+\begin{lstlisting}[language=Python, caption={Пример алгоритма машинного обучения}, label={lst:ml_algorithm}]
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+
+def train_model(X, y):
+    """Train random forest model"""
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42
+    )
+    
+    model = RandomForestClassifier(
+        n_estimators=100,
+        max_depth=10,
+        random_state=42
+    )
+    
+    model.fit(X_train, y_train)
+    accuracy = model.score(X_test, y_test)
+    
+    return model, accuracy
+\end{lstlisting}
+
+\notes{
+\item Все алгоритмы реализованы на языке Python версии 3.8+
+\item Использованы библиотеки scikit-learn, numpy, pandas
+\item Эксперименты проводились на сервере с 16 ГБ RAM
+}
