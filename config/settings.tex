@@ -237,3 +237,182 @@
 % Настройки приложений
 \renewcommand{\appendixname}{Приложение}
 \renewcommand{\appendixpagename}{Приложения}
+
+% ===== АВТОМАТИЧЕСКИЕ ПРАВИЛА ГОСТ =====
+
+% Автоматические переносы слов по ГОСТу
+\usepackage[english,russian]{babel}
+\babelprovide[import]{russian}
+\babelprovide[import]{english}
+
+% Автоматические отступы для списков по ГОСТу
+\setlength{\leftmargini}{2.5em}  % отступ для enumerate
+\setlength{\leftmarginii}{2em}   % отступ для вложенных списков
+\setlength{\leftmarginiii}{1.5em}
+\setlength{\leftmarginiv}{1em}
+
+% Автоматическое форматирование списков
+\renewcommand{\labelenumi}{\arabic{enumi})}
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii})}
+\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii})}
+\renewcommand{\labelenumiv}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.\arabic{enumiv})}
+
+% Автоматические отступы для itemize
+\renewcommand{\labelitemi}{---}
+\renewcommand{\labelitemii}{--}
+\renewcommand{\labelitemiii}{-}
+\renewcommand{\labelitemiv}{.}
+
+% Автоматическое форматирование формул по ГОСТу
+\renewcommand{\theequation}{\arabic{equation}}
+\setlength{\abovedisplayskip}{6pt}
+\setlength{\belowdisplayskip}{6pt}
+\setlength{\abovedisplayshortskip}{0pt}
+\setlength{\belowdisplayshortskip}{0pt}
+
+% Автоматические правила для ссылок
+\renewcommand{\autoref}[1]{\textbf{\ref{#1}}}
+\renewcommand{\nameref}[1]{\textbf{\ref{#1}}}
+
+% Автоматические правила для абзацев
+\setlength{\parskip}{0pt}  % без отступов между абзацами
+\setlength{\parindent}{1.25cm}  % отступ первой строки по ГОСТу
+
+% Автоматические правила для переноса страниц
+\widowpenalty=10000
+\clubpenalty=10000
+\raggedbottom
+
+% Автоматические правила для переноса слов в тексте
+\hyphenpenalty=50
+\exhyphenpenalty=50
+\doublehyphendemerits=10000
+\finalhyphendemerits=5000
+
+% Автоматические правила для таблиц
+\setlength{\tabcolsep}{6pt}
+\setlength{\arrayrulewidth}{0.4pt}
+\renewcommand{\arraystretch}{1.2}
+
+% Автоматические правила для рисунков
+\setlength{\floatsep}{12pt}
+\setlength{\textfloatsep}{12pt}
+\setlength{\intextsep}{12pt}
+
+% Автоматические правила для примечаний
+\newcommand{\autonote}[1]{%
+    \par\noindent\textbf{Примечание} — #1%
+}
+
+% Автоматические правила для списков литературы
+\renewcommand{\bibname}{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}
+
+% Автоматические правила для оглавления
+\renewcommand{\contentsname}{ОГЛАВЛЕНИЕ}
+
+% Автоматические правила для реферата
+\renewcommand{\abstractname}{РЕФЕРАТ}
+
+% Автоматические правила для заключения
+\providecommand{\conclusionname}{ЗАКЛЮЧЕНИЕ}
+
+% Автоматические правила для введения
+\providecommand{\introductionname}{ВВЕДЕНИЕ}
+
+% ===== АВТОМАТИЧЕСКИЕ КОМАНДЫ ДЛЯ УПРОЩЕНИЯ НАПИСАНИЯ =====
+% Эти команды применяют правила ГОСТ автоматически
+
+% Автоматическое создание рисунка с правильным форматированием
+\newcommand{\autofigure}[4]{%
+    \begin{figure}[H]%
+        \centering%
+        \includegraphics[width=#2]{#1}%
+        \caption{#3}%
+        \label{#4}%
+    \end{figure}%
+}
+
+% Автоматическое создание таблицы с правильным форматированием
+\newcommand{\autotable}[3]{%
+    \begin{table}[H]%
+        \centering%
+        \caption{#2}%
+        \label{#3}%
+        #1%
+    \end{table}%
+}
+
+% Автоматическое создание формулы с правильным форматированием
+\newcommand{\autoformula}[2]{%
+    \begin{equation}%
+        #1%
+        \label{#2}%
+    \end{equation}%
+}
+
+% Автоматическое создание списка с правильным форматированием
+\newcommand{\autolist}[1]{%
+    \begin{enumerate}%
+        #1%
+    \end{enumerate}%
+}
+
+% Автоматическое создание маркированного списка
+\newcommand{\autobulletlist}[1]{%
+    \begin{itemize}%
+        #1%
+    \end{itemize}%
+}
+
+% Автоматическое создание ссылки с правильным форматированием
+\providecommand{\autoref}[1]{%
+    \textbf{\ref{#1}}%
+}
+
+% Автоматическое создание ссылки на рисунок
+\newcommand{\autofigref}[1]{%
+    \textbf{рисунок \ref{#1}}%
+}
+
+% Автоматическое создание ссылки на таблицу
+\newcommand{\autotableref}[1]{%
+    \textbf{таблица \ref{#1}}%
+}
+
+% Автоматическое создание ссылки на формулу
+\newcommand{\autoformularef}[1]{%
+    \textbf{формула \ref{#1}}%
+}
+
+% Автоматическое создание примечания
+\providecommand{\autonote}[1]{%
+    \par\noindent\textbf{Примечание} — #1%
+}
+
+% Автоматическое создание нескольких примечаний
+\newcommand{\autonotes}[1]{%
+    \par\noindent\textbf{Примечания:}%
+    \begin{enumerate}%
+        #1%
+    \end{enumerate}%
+}
+
+% Автоматическое создание абзаца с правильным отступом
+\newcommand{\autopar}[1]{%
+    \par\noindent#1%
+}
+
+% Автоматическое создание заголовка раздела
+\newcommand{\autosection}[1]{%
+    \section{#1}%
+}
+
+% Автоматическое создание заголовка подраздела
+\newcommand{\autosubsection}[1]{%
+    \subsection{#1}%
+}
+
+% Автоматическое создание заголовка главы
+\newcommand{\autochapter}[1]{%
+    \chapter{#1}%
+}
