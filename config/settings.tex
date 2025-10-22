@@ -171,14 +171,11 @@
 }
 
 % Настройки примечаний согласно ГОСТ 7.32-2017
-\newcommand{\note}[1]{%
-    \par\noindent\textbf{Примечание} — #1%
-}
-
-\newcommand{\notes}[1]{%
+% Единый способ: окружение notes
+\newenvironment{notes}{%
     \par\noindent\textbf{Примечания:}%
-    \begin{enumerate}
-        #1
+    \begin{enumerate}%
+}{%
     \end{enumerate}%
 }
 
@@ -326,19 +323,6 @@
 % Создание ссылки на формулу
 \newcommand{\autoformularef}[1]{%
     \textbf{формула \ref{#1}}%
-}
-
-% Создание примечания
-\providecommand{\autonote}[1]{%
-    \par\noindent\textbf{Примечание} — #1%
-}
-
-% Создание нескольких примечаний
-\newcommand{\autonotes}[1]{%
-    \par\noindent\textbf{Примечания:}%
-    \begin{enumerate}%
-        #1%
-    \end{enumerate}%
 }
 
 % Создание абзаца с правильным отступом
