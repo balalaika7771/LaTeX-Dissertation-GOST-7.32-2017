@@ -69,24 +69,6 @@
     pdfstartview=FitH
 }
 
-% Настройки листингов кода
-\lstset{
-    basicstyle=\small\ttfamily,
-    breaklines=true,
-    frame=single,
-    numbers=left,
-    numberstyle=\tiny,
-    stepnumber=1,
-    numbersep=5pt,
-    showstringspaces=false,
-    showtabs=false,
-    tabsize=2,
-    captionpos=b,
-    commentstyle=\color{gray},
-    keywordstyle=\color{blue},
-    stringstyle=\color{red}
-}
-
 % Настройки нумерации по ГОСТу 7.32-2017
 \renewcommand{\thefigure}{\arabic{figure}}
 \renewcommand{\thetable}{\arabic{table}}
@@ -97,10 +79,10 @@
     font=small,
     justification=centering,
     singlelinecheck=false,
-    skip=0pt,  % межстрочный интервал 1.0 (обычный)
+    skip=0pt,
     belowskip=0pt,
     aboveskip=0pt,
-    hypcap=false  % запрет переноса слов в подписях к рисункам
+    hypcap=false
 }
 
 \captionsetup[table]{
@@ -110,7 +92,7 @@
     skip=0pt,
     belowskip=0pt,
     aboveskip=0pt,
-    hypcap=false  % запрет переноса слов в подписях к таблицам
+    hypcap=false
 }
 
 % Переопределяем формат подписей для соответствия ГОСТу
@@ -138,7 +120,7 @@
 \usepackage{fancyvrb}
 \usepackage{listings}
 
-% Настройки для переноса листингов
+% Настройки для листингов кода (единый стиль)
 \lstset{
     breaklines=true,
     breakatwhitespace=true,
@@ -152,154 +134,41 @@
     showstringspaces=false,
     showtabs=false,
     tabsize=2,
-    basicstyle=\small\ttfamily,
+    basicstyle=\small\fontfamily{cmtt}\selectfont,
     keywordstyle=\color{blue}\bfseries,
     commentstyle=\color{green!60!black},
     stringstyle=\color{red},
     extendedchars=true,
     inputencoding=utf8,
     upquote=true,
+    captionpos=t,
+    abovecaptionskip=10pt,
+    belowcaptionskip=10pt,
     literate={а}{{\cyra}}1 {б}{{\cyrb}}1 {в}{{\cyrv}}1 {г}{{\cyrg}}1 {д}{{\cyrd}}1 {е}{{\cyre}}1 {ё}{{\cyryo}}1 {ж}{{\cyrzh}}1 {з}{{\cyrz}}1 {и}{{\cyri}}1 {й}{{\cyrishrt}}1 {к}{{\cyrk}}1 {л}{{\cyrl}}1 {м}{{\cyrm}}1 {н}{{\cyrn}}1 {о}{{\cyro}}1 {п}{{\cyrp}}1 {р}{{\cyrr}}1 {с}{{\cyrs}}1 {т}{{\cyrt}}1 {у}{{\cyru}}1 {ф}{{\cyrf}}1 {х}{{\cyrh}}1 {ц}{{\cyrc}}1 {ч}{{\cyrch}}1 {ш}{{\cyrsh}}1 {щ}{{\cyrshch}}1 {ъ}{{\cyrhrdsn}}1 {ы}{{\cyry}}1 {ь}{{\cyrsftsn}}1 {э}{{\cyrerev}}1 {ю}{{\cyryu}}1 {я}{{\cyrya}}1
 }
 
-% Настройка для автоматического переноса длинных листингов
-\usepackage{fancyvrb}
-\DefineVerbatimEnvironment{Code}{Verbatim}{
-    fontsize=\small,
-    frame=single,
-    numbers=left,
-    numberstyle=\tiny,
-    stepnumber=1,
-    numbersep=5pt,
-    breaklines=true,
-    breakanywhere=true
+% Настройки для подписей листингов (как у таблиц - слева с тире)
+\captionsetup[lstlisting]{
+    format=hang,
+    justification=raggedright,
+    singlelinecheck=false,
+    font=small,
+    labelfont=bf,
+    textfont=normalfont,
+    skip=10pt,
+    position=top,
+    labelsep=endash
 }
 
-% Настройка для автоматического переноса листингов с продолжением
-\lstdefinestyle{breakable}{
-    breaklines=true,
-    breakatwhitespace=true,
-    breakautoindent=true,
-    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
-    frame=single,
-    numbers=left,
-    numberstyle=\tiny,
-    stepnumber=1,
-    numbersep=5pt,
-    showstringspaces=false,
-    showtabs=false,
-    tabsize=2,
-    basicstyle=\small\ttfamily,
-    keywordstyle=\color{blue}\bfseries,
-    commentstyle=\color{green!60!black},
-    stringstyle=\color{red},
-    extendedchars=true,
-    inputencoding=utf8,
-    upquote=true,
-    literate={а}{{\cyra}}1 {б}{{\cyrb}}1 {в}{{\cyrv}}1 {г}{{\cyrg}}1 {д}{{\cyrd}}1 {е}{{\cyre}}1 {ё}{{\cyryo}}1 {ж}{{\cyrzh}}1 {з}{{\cyrz}}1 {и}{{\cyri}}1 {й}{{\cyrishrt}}1 {к}{{\cyrk}}1 {л}{{\cyrl}}1 {м}{{\cyrm}}1 {н}{{\cyrn}}1 {о}{{\cyro}}1 {п}{{\cyrp}}1 {р}{{\cyrr}}1 {с}{{\cyrs}}1 {т}{{\cyrt}}1 {у}{{\cyru}}1 {ф}{{\cyrf}}1 {х}{{\cyrh}}1 {ц}{{\cyrc}}1 {ч}{{\cyrch}}1 {ш}{{\cyrsh}}1 {щ}{{\cyrshch}}1 {ъ}{{\cyrhrdsn}}1 {ы}{{\cyry}}1 {ь}{{\cyrsftsn}}1 {э}{{\cyrerev}}1 {ю}{{\cyryu}}1 {я}{{\cyrya}}1
+% Окружение для кода: \begin{CodeBlock}{ЯЗЫК}{Описание}{lst:метка} ... \end{CodeBlock}
+\lstnewenvironment{CodeBlock}[3]{%
+    \lstset{%
+        language=#1,
+        caption={#2},
+        label={#3}
+    }%
+}{%
 }
-
-% Настройка для переноса длинных листингов на новые страницы
-\lstset{
-    breaklines=true,
-    breakatwhitespace=true,
-    breakautoindent=true,
-    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
-    frame=single,
-    numbers=left,
-    numberstyle=\tiny,
-    stepnumber=1,
-    numbersep=5pt,
-    showstringspaces=false,
-    showtabs=false,
-    tabsize=2,
-    basicstyle=\small\ttfamily,
-    keywordstyle=\color{blue}\bfseries,
-    commentstyle=\color{green!60!black},
-    stringstyle=\color{red},
-    extendedchars=true,
-    inputencoding=utf8,
-    upquote=true,
-    literate={а}{{\cyra}}1 {б}{{\cyrb}}1 {в}{{\cyrv}}1 {г}{{\cyrg}}1 {д}{{\cyrd}}1 {е}{{\cyre}}1 {ё}{{\cyryo}}1 {ж}{{\cyrzh}}1 {з}{{\cyrz}}1 {и}{{\cyri}}1 {й}{{\cyrishrt}}1 {к}{{\cyrk}}1 {л}{{\cyrl}}1 {м}{{\cyrm}}1 {н}{{\cyrn}}1 {о}{{\cyro}}1 {п}{{\cyrp}}1 {р}{{\cyrr}}1 {с}{{\cyrs}}1 {т}{{\cyrt}}1 {у}{{\cyru}}1 {ф}{{\cyrf}}1 {х}{{\cyrh}}1 {ц}{{\cyrc}}1 {ч}{{\cyrch}}1 {ш}{{\cyrsh}}1 {щ}{{\cyrshch}}1 {ъ}{{\cyrhrdsn}}1 {ы}{{\cyry}}1 {ь}{{\cyrsftsn}}1 {э}{{\cyrerev}}1 {ю}{{\cyryu}}1 {я}{{\cyrya}}1
-}
-
-% Настройка для автоматического переноса листингов на новые страницы
-\lstset{
-    breaklines=true,
-    breakatwhitespace=true,
-    breakautoindent=true,
-    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
-    frame=single,
-    numbers=left,
-    numberstyle=\tiny,
-    stepnumber=1,
-    numbersep=5pt,
-    showstringspaces=false,
-    showtabs=false,
-    tabsize=2,
-    basicstyle=\small\ttfamily,
-    keywordstyle=\color{blue}\bfseries,
-    commentstyle=\color{green!60!black},
-    stringstyle=\color{red},
-    extendedchars=true,
-    inputencoding=utf8,
-    upquote=true,
-    literate={а}{{\cyra}}1 {б}{{\cyrb}}1 {в}{{\cyrv}}1 {г}{{\cyrg}}1 {д}{{\cyrd}}1 {е}{{\cyre}}1 {ё}{{\cyryo}}1 {ж}{{\cyrzh}}1 {з}{{\cyrz}}1 {и}{{\cyri}}1 {й}{{\cyrishrt}}1 {к}{{\cyrk}}1 {л}{{\cyrl}}1 {м}{{\cyrm}}1 {н}{{\cyrn}}1 {о}{{\cyro}}1 {п}{{\cyrp}}1 {р}{{\cyrr}}1 {с}{{\cyrs}}1 {т}{{\cyrt}}1 {у}{{\cyru}}1 {ф}{{\cyrf}}1 {х}{{\cyrh}}1 {ц}{{\cyrc}}1 {ч}{{\cyrch}}1 {ш}{{\cyrsh}}1 {щ}{{\cyrshch}}1 {ъ}{{\cyrhrdsn}}1 {ы}{{\cyry}}1 {ь}{{\cyrsftsn}}1 {э}{{\cyrerev}}1 {ю}{{\cyryu}}1 {я}{{\cyrya}}1
-}
-
-% Настройка для переноса длинных листингов
-\usepackage{fancyvrb}
-\DefineVerbatimEnvironment{Code}{Verbatim}{
-    fontsize=\small,
-    frame=single,
-    numbers=left,
-    numberstyle=\tiny,
-    stepnumber=1,
-    numbersep=5pt,
-    breaklines=true,
-    breakanywhere=true
-}
-
-
-\lstdefinestyle{code}{
-    breaklines=true,
-    frame=single,
-    numbers=left,
-    numberstyle=\tiny,
-    stepnumber=1,
-    numbersep=5pt,
-    showstringspaces=false,
-    showtabs=false,
-    tabsize=2,
-    basicstyle=\small\ttfamily,
-    keywordstyle=\color{blue}\bfseries,
-    commentstyle=\color{green!60!black},
-    stringstyle=\color{red},
-    extendedchars=true,
-    inputencoding=utf8,
-    upquote=true
-}
-
-% Настройки для fvextra (улучшенный перенос кода)
-\DefineVerbatimEnvironment{CodeBreakable}{Verbatim}{
-    fontsize=\small,
-    frame=single,
-    numbers=left,
-    stepnumber=1,
-    numbersep=5pt,
-    breaklines=true,
-    breakanywhere=true,
-    breakautoindent=true
-}
-
-% Команда для создания продолжения листинга
-\newcommand{\listingcontinuation}[1]{%
-    \textbf{Продолжение листинга #1}%
-}
-
-% СТИЛЬ ДЛЯ КОДА
-% Используйте: \begin{lstlisting}[style=code, language=ЯЗЫК, caption={Описание}, label={lst:метка}]
-
 
 % Настройки примечаний согласно ГОСТ 7.32-2017
 \newcommand{\note}[1]{%
@@ -314,7 +183,7 @@
 }
 
 % Настройка межстрочного интервала для многострочных подписей
-\captionsetup[table]{format=gosttable,skip=6pt}  % межстрочный интервал 1.0
+\captionsetup[table]{format=gosttable,skip=6pt}
 
 % Настройки списков рисунков и таблиц
 \renewcommand{\listfigurename}{СПИСОК ИЛЛЮСТРАЦИЙ}
@@ -385,11 +254,6 @@
 \setlength{\textfloatsep}{12pt}
 \setlength{\intextsep}{12pt}
 
-% Автоматические правила для примечаний
-\newcommand{\autonote}[1]{%
-    \par\noindent\textbf{Примечание} — #1%
-}
-
 % Автоматические правила для списков литературы
 \renewcommand{\bibname}{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}
 
@@ -405,10 +269,9 @@
 % Автоматические правила для введения
 \providecommand{\introductionname}{ВВЕДЕНИЕ}
 
-% ===== АВТОМАТИЧЕСКИЕ КОМАНДЫ ДЛЯ УПРОЩЕНИЯ НАПИСАНИЯ =====
-% Эти команды применяют правила ГОСТ автоматически
+% ===== КОМАНДЫ ДЛЯ УПРОЩЕНИЯ НАПИСАНИЯ =====
 
-% Автоматическое создание рисунка с правильным форматированием
+% Создание рисунка с правильным форматированием
 \newcommand{\autofigure}[4]{%
     \begin{figure}[H]%
         \centering%
@@ -418,7 +281,7 @@
     \end{figure}%
 }
 
-% Автоматическое создание таблицы с правильным форматированием
+% Создание таблицы с правильным форматированием
 \newcommand{\autotable}[3]{%
     \begin{table}[H]%
         \centering%
@@ -428,7 +291,7 @@
     \end{table}%
 }
 
-% Автоматическое создание формулы с правильным форматированием
+% Создание формулы с правильным форматированием
 \newcommand{\autoformula}[2]{%
     \begin{equation}%
         #1%
@@ -436,46 +299,41 @@
     \end{equation}%
 }
 
-% Автоматическое создание списка с правильным форматированием
+% Создание списка с правильным форматированием
 \newcommand{\autolist}[1]{%
     \begin{enumerate}%
         #1%
     \end{enumerate}%
 }
 
-% Автоматическое создание маркированного списка
+% Создание маркированного списка
 \newcommand{\autobulletlist}[1]{%
     \begin{itemize}%
         #1%
     \end{itemize}%
 }
 
-% Автоматическое создание ссылки с правильным форматированием
-\providecommand{\autoref}[1]{%
-    \textbf{\ref{#1}}%
-}
-
-% Автоматическое создание ссылки на рисунок
+% Создание ссылки на рисунок
 \newcommand{\autofigref}[1]{%
     \textbf{рисунок \ref{#1}}%
 }
 
-% Автоматическое создание ссылки на таблицу
+% Создание ссылки на таблицу
 \newcommand{\autotableref}[1]{%
     \textbf{таблица \ref{#1}}%
 }
 
-% Автоматическое создание ссылки на формулу
+% Создание ссылки на формулу
 \newcommand{\autoformularef}[1]{%
     \textbf{формула \ref{#1}}%
 }
 
-% Автоматическое создание примечания
+% Создание примечания
 \providecommand{\autonote}[1]{%
     \par\noindent\textbf{Примечание} — #1%
 }
 
-% Автоматическое создание нескольких примечаний
+% Создание нескольких примечаний
 \newcommand{\autonotes}[1]{%
     \par\noindent\textbf{Примечания:}%
     \begin{enumerate}%
@@ -483,22 +341,7 @@
     \end{enumerate}%
 }
 
-% Автоматическое создание абзаца с правильным отступом
+% Создание абзаца с правильным отступом
 \newcommand{\autopar}[1]{%
     \par\noindent#1%
-}
-
-% Автоматическое создание заголовка раздела
-\newcommand{\autosection}[1]{%
-    \section{#1}%
-}
-
-% Автоматическое создание заголовка подраздела
-\newcommand{\autosubsection}[1]{%
-    \subsection{#1}%
-}
-
-% Автоматическое создание заголовка главы
-\newcommand{\autochapter}[1]{%
-    \chapter{#1}%
 }

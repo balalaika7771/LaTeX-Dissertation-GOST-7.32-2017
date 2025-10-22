@@ -42,7 +42,7 @@ P(x) = \frac{e^{x_i}}{\sum_{j=1}^{n} e^{x_j}}
 
 Формула \ref{eq:softmax} описывает функцию softmax, используемую для нормализации вероятностей.
 
-\begin{lstlisting}[style=code, language=Python, caption={Пример реализации API}, label={lst:api_implementation}]
+\begin{CodeBlock}{Python}{Пример реализации API}{lst:api_implementation}
 from flask import Flask, request, jsonify
 import numpy as np
 
@@ -66,7 +66,7 @@ def predict():
 
 if __name__ == '__main__':
     app.run(debug=True)
-\end{lstlisting}
+\end{CodeBlock}
 
 В листинге \ref{lst:api_implementation} показана реализация API endpoint для получения предсказаний от модели машинного обучения.
 

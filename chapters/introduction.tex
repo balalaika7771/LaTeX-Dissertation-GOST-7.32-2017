@@ -38,14 +38,14 @@ L(\theta) = \frac{1}{m} \sum_{i=1}^{m} \log p(y^{(i)} | x^{(i)}; \theta)
 
 Формула \ref{eq:log_likelihood} описывает функцию логарифмического правдоподобия, используемую в машинном обучении для оценки качества модели.
 
-\begin{lstlisting}[style=code, language=Python, caption={Пример анализа данных}, label={lst:data_analysis}]
+\begin{CodeBlock}{Python}{Пример анализа данных}{lst:data_analysis}
 import pandas as pd
 import matplotlib.pyplot as plt
 
 # Load and analyze data
 data = pd.read_csv('research_data.csv')
-print(f"Dataset size: {data.shape}")
-print(f"Missing values: {data.isnull().sum().sum()}")
+print("Dataset size: %s" % str(data.shape))
+print("Missing values: %d" % data.isnull().sum().sum())
 
 # Visualize distribution
 plt.figure(figsize=(10, 6))
@@ -54,7 +54,7 @@ plt.title('Target variable distribution')
 plt.xlabel('Value')
 plt.ylabel('Frequency')
 plt.show()
-\end{lstlisting}
+\end{CodeBlock}
 
 В листинге \ref{lst:data_analysis} показан пример анализа данных для исследования, демонстрирующий современные подходы к обработке информации.
 

@@ -58,7 +58,7 @@ XGBoost & 0.93 & 180 с & 0.3 мс & 80 MB \\
 
 Формула \ref{eq:accuracy} определяет метрику точности классификации, где TP — истинно положительные, TN — истинно отрицательные, FP — ложно положительные, FN — ложно отрицательные результаты.
 
-\begin{lstlisting}[style=code, language=Python, caption={Код для вычисления метрик}, label={lst:metrics_calculation}]
+\begin{CodeBlock}{Python}{Код для вычисления метрик}{lst:metrics_calculation}
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 import numpy as np
 
@@ -80,8 +80,8 @@ def calculate_metrics(y_true, y_pred):
 y_true = [0, 1, 1, 0, 1]
 y_pred = [0, 1, 0, 0, 1]
 metrics = calculate_metrics(y_true, y_pred)
-print(f"Accuracy: {metrics['accuracy']:.3f}")
-\end{lstlisting}
+print("Accuracy: %.3f" % metrics['accuracy'])
+\end{CodeBlock}
 
 В листинге \ref{lst:metrics_calculation} показан код для вычисления основных метрик качества модели машинного обучения.
 

@@ -125,7 +125,7 @@ print(f"Sum: {result}")
 
 \subsection{Ультимативный способ описания кода}
 
-\begin{lstlisting}[style=code, language=Python, caption={Пример Python кода с улучшенной подсветкой}, label={lst:python_enhanced}]
+\begin{CodeBlock}{Python}{Пример Python кода с улучшенной подсветкой}{lst:python_enhanced}
 def calculate_sum(a, b):
     """Calculate sum of two numbers"""
     return a + b
@@ -133,23 +133,23 @@ def calculate_sum(a, b):
 # Example usage
 result = calculate_sum(5, 3)
 print(f"Sum: {result}")
-\end{lstlisting}
+\end{CodeBlock}
 
 \subsection{Листинг с улучшенным переносом (fvextra)}
 
-\begin{CodeBreakable}
+\begin{CodeBlock}{Python}{Пример Python кода с улучшенной подсветкой}{lst:python_enhanced}
 def calculate_sum(a, b):
     """Calculate sum of two numbers"""
     return a + b
 
 # Example usage
 result = calculate_sum(5, 3)
-print(f"Sum: {result}")
-\end{CodeBreakable}
+print("Sum: %s" % result)
+\end{CodeBlock}
 
 \subsection{Длинный листинг с переносом}
 
-\begin{lstlisting}[style=code, language=Python, caption={Пример алгоритма машинного обучения с улучшенной подсветкой}, label={lst:ml_algorithm_enhanced}]
+\begin{CodeBlock}{Python}{Пример алгоритма машинного обучения с улучшенной подсветкой}{lst:ml_algorithm_enhanced}
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split, cross_val_score
@@ -270,13 +270,13 @@ def main():
 
 if __name__ == "__main__":
     main()
-\end{lstlisting}
+\end{CodeBlock}
 
 \subsection{Примеры с разными языками программирования}
 
 \subsubsection{Java код}
 
-\begin{lstlisting}[style=code, language=Java, caption={Пример Java класса}, label={lst:java_example}]
+\begin{CodeBlock}{Java}{Пример Java класса}{lst:java_example}
 public class Calculator {
     private double result;
     
@@ -298,11 +298,11 @@ public class Calculator {
         return result;
     }
 }
-\end{lstlisting}
+\end{CodeBlock}
 
 \subsubsection{C++ код}
 
-\begin{lstlisting}[style=code, language=C++, caption={Пример C++ класса}, label={lst:cpp_example}]
+\begin{CodeBlock}{C++}{Пример C++ класса}{lst:cpp_example}
 #include <iostream>
 #include <vector>
 
@@ -338,7 +338,7 @@ public:
         }
     }
 };
-\end{lstlisting}
+\end{CodeBlock}
 
 \section{Примеры примечаний}
 

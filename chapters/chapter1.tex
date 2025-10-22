@@ -41,7 +41,7 @@ E = mc^2
 
 Формула \ref{eq:einstein} описывает взаимосвязь между массой и энергией.
 
-\begin{lstlisting}[style=code, language=Python, caption={Пример обработки данных}, label={lst:data_processing}]
+\begin{CodeBlock}{Python}{Пример обработки данных}{lst:data_processing}
 import pandas as pd
 import numpy as np
 
@@ -52,8 +52,8 @@ data = pd.read_csv('data.csv')
 data_clean = data.dropna()
 data_processed = data_clean.apply(lambda x: x * 2)
 
-print(f"Processed {len(data_processed)} records")
-\end{lstlisting}
+print("Processed %d records" % len(data_processed))
+\end{CodeBlock}
 
 В листинге \ref{lst:data_processing} показан пример обработки данных с использованием библиотеки pandas.
 

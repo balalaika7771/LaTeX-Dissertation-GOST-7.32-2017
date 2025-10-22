@@ -38,19 +38,19 @@
 
 Формула \ref{eq:efficiency} определяет общую эффективность решения, учитывающую все ключевые параметры.
 
-\begin{lstlisting}[style=code, language=Python, caption={Финальная оценка системы}, label={lst:final_evaluation}]
+\begin{CodeBlock}{Python}{Финальная оценка системы}{lst:final_evaluation}
 def evaluate_system(model, test_data):
     """Final system performance evaluation"""
     start_time = time.time()
     
-    # Make predictions
+    % Make predictions
     predictions = model.predict(test_data['features'])
     
-    # Calculate metrics
+    % Calculate metrics
     accuracy = accuracy_score(test_data['labels'], predictions)
     inference_time = time.time() - start_time
     
-    # Calculate efficiency
+    % Calculate efficiency
     efficiency = (accuracy * 1000) / (inference_time * model.memory_usage)
     
     return {
@@ -59,12 +59,12 @@ def evaluate_system(model, test_data):
         'efficiency': efficiency
     }
 
-# Final evaluation results
+% Final evaluation results
 results = evaluate_system(final_model, test_dataset)
-print(f"Final accuracy: {results['accuracy']:.3f}")
-print(f"Inference time: {results['inference_time']:.3f} s")
-print(f"Efficiency: {results['efficiency']:.2f}")
-\end{lstlisting}
+print("Final accuracy: %.3f" % results['accuracy'])
+print("Inference time: %.3f s" % results['inference_time'])
+print("Efficiency: %.2f" % results['efficiency'])
+\end{CodeBlock}
 
 В листинге \ref{lst:final_evaluation} представлен код для финальной оценки производительности разработанной системы.
 
