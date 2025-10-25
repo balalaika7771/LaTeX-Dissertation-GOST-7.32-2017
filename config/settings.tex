@@ -145,7 +145,7 @@
     showstringspaces=false,
     showtabs=false,
     tabsize=2,
-    basicstyle=\small\fontfamily{cmtt}\selectfont,
+    basicstyle=\small\ttfamily,
     keywordstyle=\color{blue}\bfseries,
     commentstyle=\color{green!60!black},
     stringstyle=\color{red},
@@ -343,56 +343,126 @@
 
 % ===== КОМАНДЫ ДЛЯ АВТОМАТИКИ (ПО ГОСТ 7.32-2017) =====
 
-% Простые команды для схем (без tikz)
+% Стили для блок-схем по ГОСТ 19.701-90
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=red!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=yellow!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+% Блок-схема алгоритма по ГОСТ 19.701-90
 \newcommand{\autoblockdiagram}[3]{%
     \begin{figure}[H]%
         \centering%
-        \fbox{\parbox{8cm}{\centering\vspace{2cm}\textbf{Блок-схема алгоритма}\\\vspace{1cm}Здесь будет размещена\\блок-схема по ГОСТ 19.701-90\\\vspace{2cm}}}%
+        \begin{tikzpicture}[node distance=1.5cm]%
+            \node (start) [startstop] {Начало};%
+            \node (input) [io, below of=start] {Ввод данных};%
+            \node (process) [process, below of=input] {Обработка};%
+            \node (decision) [decision, below of=process] {Условие?};%
+            \node (output) [io, below of=decision] {Вывод результата};%
+            \node (stop) [startstop, below of=output] {Конец};%
+            %
+            \draw [arrow] (start) -- (input);%
+            \draw [arrow] (input) -- (process);%
+            \draw [arrow] (process) -- (decision);%
+            \draw [arrow] (decision) -- node[anchor=east] {Да} (output);%
+            \draw [arrow] (decision) -- node[anchor=south] {Нет} ++(-3,0) |- (process);%
+            \draw [arrow] (output) -- (stop);%
+        \end{tikzpicture}%
         \caption{#2}%
         \label{#3}%
     \end{figure}%
 }
 
+% Схема системы управления по ГОСТ 2.701-2008
 \newcommand{\autocontrolscheme}[3]{%
     \begin{figure}[H]%
         \centering%
-        \fbox{\parbox{8cm}{\centering\vspace{2cm}\textbf{Схема системы управления}\\\vspace{1cm}Здесь будет размещена\\схема по ГОСТ 2.701-2008\\\vspace{2cm}}}%
+        \begin{tikzpicture}[node distance=2cm]%
+            \node (sensor) [rectangle, draw=black, fill=blue!20, minimum width=2cm, minimum height=1cm] {Датчик};%
+            \node (controller) [rectangle, draw=black, fill=green!20, minimum width=2cm, minimum height=1cm, right of=sensor] {Контроллер};%
+            \node (actuator) [rectangle, draw=black, fill=red!20, minimum width=2cm, minimum height=1cm, right of=controller] {Исполнительный механизм};%
+            \node (process) [rectangle, draw=black, fill=yellow!20, minimum width=2cm, minimum height=1cm, below of=controller] {Объект управления};%
+            %
+            \draw [arrow] (sensor) -- node[above] {Измерение} (controller);%
+            \draw [arrow] (controller) -- node[above] {Управление} (actuator);%
+            \draw [arrow] (actuator) -- node[right] {Воздействие} (process);%
+            \draw [arrow] (process) -- node[left] {Состояние} (sensor);%
+        \end{tikzpicture}%
         \caption{#2}%
         \label{#3}%
     \end{figure}%
 }
 
+% Временная диаграмма
 \newcommand{\autotimingdiagram}[3]{%
     \begin{figure}[H]%
         \centering%
-        \fbox{\parbox{8cm}{\centering\vspace{2cm}\textbf{Временная диаграмма}\\\vspace{1cm}Здесь будет размещена\\временная диаграмма\\\vspace{2cm}}}%
+        \begin{tikzpicture}[scale=0.8]%
+            \draw[thick] (0,0) -- (8,0) node[right] {Время};%
+            \draw[thick] (0,0) -- (0,4) node[above] {Сигналы};%
+            %
+            \draw[blue,thick] (0,3) -- (2,3) -- (2,1) -- (4,1) -- (4,3) -- (6,3) -- (6,1) -- (8,1);%
+            \node[blue,left] at (0,3) {Сигнал 1};%
+            %
+            \draw[red,thick] (0,2) -- (1,2) -- (1,0.5) -- (3,0.5) -- (3,2) -- (5,2) -- (5,0.5) -- (8,0.5);%
+            \node[red,left] at (0,2) {Сигнал 2};%
+            %
+            \draw[green,thick] (0,1) -- (1.5,1) -- (1.5,0.2) -- (3.5,0.2) -- (3.5,1) -- (5.5,1) -- (5.5,0.2) -- (8,0.2);%
+            \node[green,left] at (0,1) {Сигнал 3};%
+        \end{tikzpicture}%
         \caption{#2}%
         \label{#3}%
     \end{figure}%
 }
 
+% Структурная схема
 \newcommand{\autostructure}[3]{%
     \begin{figure}[H]%
         \centering%
-        \fbox{\parbox{8cm}{\centering\vspace{2cm}\textbf{Структурная схема}\\\vspace{1cm}Здесь будет размещена\\структурная схема\\\vspace{2cm}}}%
+        \begin{tikzpicture}[node distance=2cm]%
+            \node (input) [rectangle, draw=black, fill=blue!20] {Входной сигнал};%
+            \node (block1) [rectangle, draw=black, fill=green!20, right of=input] {Блок 1};%
+            \node (block2) [rectangle, draw=black, fill=orange!20, right of=block1] {Блок 2};%
+            \node (output) [rectangle, draw=black, fill=red!20, right of=block2] {Выходной сигнал};%
+            %
+            \draw [arrow] (input) -- (block1);%
+            \draw [arrow] (block1) -- (block2);%
+            \draw [arrow] (block2) -- (output);%
+        \end{tikzpicture}%
         \caption{#2}%
         \label{#3}%
     \end{figure}%
 }
 
+% Функциональная схема
 \newcommand{\autofunctional}[3]{%
     \begin{figure}[H]%
         \centering%
-        \fbox{\parbox{8cm}{\centering\vspace{2cm}\textbf{Функциональная схема}\\\vspace{1cm}Здесь будет размещена\\функциональная схема\\\vspace{2cm}}}%
+        \begin{tikzpicture}[node distance=1.5cm]%
+            \node (input) [circle, draw=black, fill=blue!20] {Вход};%
+            \node (process1) [rectangle, draw=black, fill=green!20, right of=input] {Обработка 1};%
+            \node (process2) [rectangle, draw=black, fill=orange!20, below of=process1] {Обработка 2};%
+            \node (output) [circle, draw=black, fill=red!20, right of=process2] {Выход};%
+            %
+            \draw [arrow] (input) -- (process1);%
+            \draw [arrow] (process1) -- (process2);%
+            \draw [arrow] (process2) -- (output);%
+        \end{tikzpicture}%
         \caption{#2}%
         \label{#3}%
     \end{figure}%
 }
 
+% Принципиальная схема
 \newcommand{\autoschematic}[3]{%
     \begin{figure}[H]%
         \centering%
-        \fbox{\parbox{8cm}{\centering\vspace{2cm}\textbf{Принципиальная схема}\\\vspace{1cm}Здесь будет размещена\\принципиальная схема\\\vspace{2cm}}}%
+        \begin{circuitikz}[scale=0.8]%
+            \draw (0,0) to[resistor, l=$R_1$] (2,0) to[capacitor, l=$C_1$] (4,0) to[inductor, l=$L_1$] (6,0);%
+            \draw (0,-2) to[voltage source, l=$V_{in}$] (0,0);%
+            \draw (6,0) to[resistor, l=$R_2$] (6,-2) to[ground] (0,-2);%
+        \end{circuitikz}%
         \caption{#2}%
         \label{#3}%
     \end{figure}%
