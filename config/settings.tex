@@ -6,6 +6,11 @@
     bottom=20mm
 }
 
+% Настройки нумерации страниц по требованиям РУДН
+% Нумерация внизу/вверху посередине листа
+\pagestyle{plain}
+\setlength{\footskip}{20pt}
+
 % Межстрочный интервал 1.5 по ГОСТу
 \onehalfspacing
 
@@ -15,18 +20,19 @@
 % Настройки шрифтов по ГОСТу для pdfLaTeX
 \usepackage{times}
 
-% Настройки заголовков по ГОСТу 7.32-2017
+% Настройки заголовков по ГОСТу 7.32-2017 и требованиям РУДН
+% Заголовки структурных элементов - по центру, прописными буквами, без точки в конце
 \titleformat{\chapter}[display]
 {\normalfont\bfseries\centering}
-{\chaptertitlename\ \thechapter}{20pt}{\Large}
+{\MakeUppercase{\chaptertitlename\ \thechapter}}{20pt}{\Large}
 
 \titleformat{\section}
-{\normalfont\bfseries}
-{\thesection}{1em}{}
+{\normalfont\bfseries\centering}
+{\MakeUppercase{\thesection}}{1em}{\MakeUppercase}
 
 \titleformat{\subsection}
-{\normalfont\bfseries}
-{\thesubsection}{1em}{}
+{\normalfont\bfseries\centering}
+{\MakeUppercase{\thesubsection}}{1em}{\MakeUppercase}
 
 % Настройки оглавления по ГОСТу 7.32-2017
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
@@ -51,11 +57,16 @@
 % Настройки библиографии
 \addbibresource{bibliography/references.bib}
 
-% Настройки стиля библиографии по ГОСТ 7.32-2017
+% Настройки стиля библиографии по ГОСТ 7.32-2017 и требованиям РУДН
 \DeclareFieldFormat{labelnumberwidth}{#1.}
 \setlength{\biblabelsep}{0.5em}
 \renewcommand*{\bibfont}{\small}
 \setlength{\bibhang}{1.25cm} % абзацный отступ по ГОСТу
+
+% Формат ссылок [номер, с.страница] по требованиям РУДН
+% Используем стандартный формат gost-numeric с настройками
+\DeclareFieldFormat{cite}{[#1]}
+\DeclareFieldFormat{textcite}{[#1]}
 
 % Настройки гиперссылок
 \hypersetup{
