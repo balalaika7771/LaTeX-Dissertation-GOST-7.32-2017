@@ -340,3 +340,60 @@
 \newcommand{\autopar}[1]{%
     \par\noindent#1%
 }
+
+% ===== КОМАНДЫ ДЛЯ АВТОМАТИКИ (ПО ГОСТ 7.32-2017) =====
+
+% Простые команды для схем (без tikz)
+\newcommand{\autoblockdiagram}[3]{%
+    \begin{figure}[H]%
+        \centering%
+        \fbox{\parbox{8cm}{\centering\vspace{2cm}\textbf{Блок-схема алгоритма}\\\vspace{1cm}Здесь будет размещена\\блок-схема по ГОСТ 19.701-90\\\vspace{2cm}}}%
+        \caption{#2}%
+        \label{#3}%
+    \end{figure}%
+}
+
+\newcommand{\autocontrolscheme}[3]{%
+    \begin{figure}[H]%
+        \centering%
+        \fbox{\parbox{8cm}{\centering\vspace{2cm}\textbf{Схема системы управления}\\\vspace{1cm}Здесь будет размещена\\схема по ГОСТ 2.701-2008\\\vspace{2cm}}}%
+        \caption{#2}%
+        \label{#3}%
+    \end{figure}%
+}
+
+\newcommand{\autotimingdiagram}[3]{%
+    \begin{figure}[H]%
+        \centering%
+        \fbox{\parbox{8cm}{\centering\vspace{2cm}\textbf{Временная диаграмма}\\\vspace{1cm}Здесь будет размещена\\временная диаграмма\\\vspace{2cm}}}%
+        \caption{#2}%
+        \label{#3}%
+    \end{figure}%
+}
+
+\newcommand{\autostructure}[3]{%
+    \begin{figure}[H]%
+        \centering%
+        \fbox{\parbox{8cm}{\centering\vspace{2cm}\textbf{Структурная схема}\\\vspace{1cm}Здесь будет размещена\\структурная схема\\\vspace{2cm}}}%
+        \caption{#2}%
+        \label{#3}%
+    \end{figure}%
+}
+
+\newcommand{\autofunctional}[3]{%
+    \begin{figure}[H]%
+        \centering%
+        \fbox{\parbox{8cm}{\centering\vspace{2cm}\textbf{Функциональная схема}\\\vspace{1cm}Здесь будет размещена\\функциональная схема\\\vspace{2cm}}}%
+        \caption{#2}%
+        \label{#3}%
+    \end{figure}%
+}
+
+\newcommand{\autoschematic}[3]{%
+    \begin{figure}[H]%
+        \centering%
+        \fbox{\parbox{8cm}{\centering\vspace{2cm}\textbf{Принципиальная схема}\\\vspace{1cm}Здесь будет размещена\\принципиальная схема\\\vspace{2cm}}}%
+        \caption{#2}%
+        \label{#3}%
+    \end{figure}%
+}
