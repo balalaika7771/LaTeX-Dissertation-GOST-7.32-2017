@@ -54,19 +54,13 @@
 \setlength{\cftbeforesecskip}{0pt}
 \setlength{\cftbeforesubsecskip}{0pt}
 
-% Настройки библиографии
-\addbibresource{bibliography/references.bib}
-
-% Настройки стиля библиографии по ГОСТ 7.32-2017 и требованиям РУДН
+% Настройки библиографии по ГОСТу (biblatex)
+\DeclareFieldFormat{cite}{[#1]}
+\DeclareFieldFormat{textcite}{[#1]}
 \DeclareFieldFormat{labelnumberwidth}{#1.}
 \setlength{\biblabelsep}{0.5em}
 \renewcommand*{\bibfont}{\small}
-\setlength{\bibhang}{1.25cm} % абзацный отступ по ГОСТу
-
-% Формат ссылок [номер, с.страница] по требованиям РУДН
-% Используем стандартный формат gost-numeric с настройками
-\DeclareFieldFormat{cite}{[#1]}
-\DeclareFieldFormat{textcite}{[#1]}
+\setlength{\bibhang}{1.25cm}
 
 % Настройки гиперссылок
 \hypersetup{
@@ -128,8 +122,14 @@
 }
 
 % Настройка переноса листингов кода
-\usepackage{fancyvrb}
 \usepackage{listings}
+\usepackage{verbatim}
+
+% Настройка шрифта для verbatim (используем доступный моноширинный шрифт)
+% Переопределяем шрифт verbatim для использования ttfamily вместо Courier
+\makeatletter
+\def\verbatim@font{\ttfamily\small}
+\makeatother
 
 % Настройки для листингов кода (единый стиль)
 \lstset{
@@ -145,8 +145,8 @@
     showstringspaces=false,
     showtabs=false,
     tabsize=2,
-    basicstyle=\small\ttfamily,
-    keywordstyle=\color{blue}\bfseries,
+    basicstyle=\small\fontfamily{cmtt}\selectfont, % Use cmtt for better compatibility
+    keywordstyle=\color{blue},
     commentstyle=\color{green!60!black},
     stringstyle=\color{red},
     extendedchars=true,
@@ -354,19 +354,19 @@
 \newcommand{\autoblockdiagram}[3]{%
     \begin{figure}[H]%
         \centering%
-        \begin{tikzpicture}[node distance=1.5cm]%
+        \begin{tikzpicture}[node distance=1.8cm, scale=0.8, transform shape]%
             \node (start) [startstop] {Начало};%
-            \node (input) [io, below of=start] {Ввод данных};%
-            \node (process) [process, below of=input] {Обработка};%
-            \node (decision) [decision, below of=process] {Условие?};%
-            \node (output) [io, below of=decision] {Вывод результата};%
-            \node (stop) [startstop, below of=output] {Конец};%
+            \node (input) [io, below=of start] {Ввод данных};%
+            \node (process) [process, below=of input] {Обработка};%
+            \node (decision) [decision, below=of process] {Условие?};%
+            \node (output) [io, below=of decision] {Вывод результата};%
+            \node (stop) [startstop, below=of output] {Конец};%
             %
             \draw [arrow] (start) -- (input);%
             \draw [arrow] (input) -- (process);%
             \draw [arrow] (process) -- (decision);%
             \draw [arrow] (decision) -- node[anchor=east] {Да} (output);%
-            \draw [arrow] (decision) -- node[anchor=south] {Нет} ++(-3,0) |- (process);%
+            \draw [arrow] (decision) -- node[anchor=south] {Нет} ++(-2.5,0) |- (process);%
             \draw [arrow] (output) -- (stop);%
         \end{tikzpicture}%
         \caption{#2}%
@@ -378,11 +378,11 @@
 \newcommand{\autocontrolscheme}[3]{%
     \begin{figure}[H]%
         \centering%
-        \begin{tikzpicture}[node distance=2cm]%
+        \begin{tikzpicture}[node distance=2cm, scale=0.7, transform shape]%
             \node (sensor) [rectangle, draw=black, fill=blue!20, minimum width=2cm, minimum height=1cm] {Датчик};%
-            \node (controller) [rectangle, draw=black, fill=green!20, minimum width=2cm, minimum height=1cm, right of=sensor] {Контроллер};%
-            \node (actuator) [rectangle, draw=black, fill=red!20, minimum width=2cm, minimum height=1cm, right of=controller] {Исполнительный механизм};%
-            \node (process) [rectangle, draw=black, fill=yellow!20, minimum width=2cm, minimum height=1cm, below of=controller] {Объект управления};%
+            \node (controller) [rectangle, draw=black, fill=green!20, minimum width=2cm, minimum height=1cm, right=of sensor] {Контроллер};%
+            \node (actuator) [rectangle, draw=black, fill=red!20, minimum width=2cm, minimum height=1cm, right=of controller] {Исполнительный механизм};%
+            \node (process) [rectangle, draw=black, fill=yellow!20, minimum width=2cm, minimum height=1cm, below=of controller] {Объект управления};%
             %
             \draw [arrow] (sensor) -- node[above] {Измерение} (controller);%
             \draw [arrow] (controller) -- node[above] {Управление} (actuator);%
@@ -398,17 +398,17 @@
 \newcommand{\autotimingdiagram}[3]{%
     \begin{figure}[H]%
         \centering%
-        \begin{tikzpicture}[scale=0.8]%
-            \draw[thick] (0,0) -- (8,0) node[right] {Время};%
+        \begin{tikzpicture}[scale=0.6, transform shape]%
+            \draw[thick] (0,0) -- (10,0) node[right] {Время};%
             \draw[thick] (0,0) -- (0,4) node[above] {Сигналы};%
             %
-            \draw[blue,thick] (0,3) -- (2,3) -- (2,1) -- (4,1) -- (4,3) -- (6,3) -- (6,1) -- (8,1);%
+            \draw[blue,thick] (0,3) -- (2,3) -- (2,1) -- (4,1) -- (4,3) -- (6,3) -- (6,1) -- (8,1) -- (8,3) -- (10,3);%
             \node[blue,left] at (0,3) {Сигнал 1};%
             %
-            \draw[red,thick] (0,2) -- (1,2) -- (1,0.5) -- (3,0.5) -- (3,2) -- (5,2) -- (5,0.5) -- (8,0.5);%
+            \draw[red,thick] (0,2) -- (1,2) -- (1,0.5) -- (3,0.5) -- (3,2) -- (5,2) -- (5,0.5) -- (7,0.5) -- (7,2) -- (10,2);%
             \node[red,left] at (0,2) {Сигнал 2};%
             %
-            \draw[green,thick] (0,1) -- (1.5,1) -- (1.5,0.2) -- (3.5,0.2) -- (3.5,1) -- (5.5,1) -- (5.5,0.2) -- (8,0.2);%
+            \draw[green,thick] (0,1) -- (1.5,1) -- (1.5,0.2) -- (3.5,0.2) -- (3.5,1) -- (5.5,1) -- (5.5,0.2) -- (7.5,0.2) -- (7.5,1) -- (10,1);%
             \node[green,left] at (0,1) {Сигнал 3};%
         \end{tikzpicture}%
         \caption{#2}%
@@ -420,11 +420,11 @@
 \newcommand{\autostructure}[3]{%
     \begin{figure}[H]%
         \centering%
-        \begin{tikzpicture}[node distance=2cm]%
-            \node (input) [rectangle, draw=black, fill=blue!20] {Входной сигнал};%
-            \node (block1) [rectangle, draw=black, fill=green!20, right of=input] {Блок 1};%
-            \node (block2) [rectangle, draw=black, fill=orange!20, right of=block1] {Блок 2};%
-            \node (output) [rectangle, draw=black, fill=red!20, right of=block2] {Выходной сигнал};%
+        \begin{tikzpicture}[node distance=2cm, scale=0.7, transform shape]%
+            \node (input) [rectangle, draw=black, fill=blue!20, minimum width=2cm, minimum height=1cm] {Входной сигнал};%
+            \node (block1) [rectangle, draw=black, fill=green!20, minimum width=2cm, minimum height=1cm, right=of input] {Блок 1};%
+            \node (block2) [rectangle, draw=black, fill=orange!20, minimum width=2cm, minimum height=1cm, right=of block1] {Блок 2};%
+            \node (output) [rectangle, draw=black, fill=red!20, minimum width=2cm, minimum height=1cm, right=of block2] {Выходной сигнал};%
             %
             \draw [arrow] (input) -- (block1);%
             \draw [arrow] (block1) -- (block2);%
@@ -439,11 +439,11 @@
 \newcommand{\autofunctional}[3]{%
     \begin{figure}[H]%
         \centering%
-        \begin{tikzpicture}[node distance=1.5cm]%
-            \node (input) [circle, draw=black, fill=blue!20] {Вход};%
-            \node (process1) [rectangle, draw=black, fill=green!20, right of=input] {Обработка 1};%
-            \node (process2) [rectangle, draw=black, fill=orange!20, below of=process1] {Обработка 2};%
-            \node (output) [circle, draw=black, fill=red!20, right of=process2] {Выход};%
+        \begin{tikzpicture}[node distance=1.8cm, scale=0.7, transform shape]%
+            \node (input) [circle, draw=black, fill=blue!20, minimum size=1.5cm] {Вход};%
+            \node (process1) [rectangle, draw=black, fill=green!20, minimum width=2cm, minimum height=1cm, right=of input] {Обработка 1};%
+            \node (process2) [rectangle, draw=black, fill=orange!20, minimum width=2cm, minimum height=1cm, below=of process1] {Обработка 2};%
+            \node (output) [circle, draw=black, fill=red!20, minimum size=1.5cm, right=of process2] {Выход};%
             %
             \draw [arrow] (input) -- (process1);%
             \draw [arrow] (process1) -- (process2);%
@@ -458,7 +458,7 @@
 \newcommand{\autoschematic}[3]{%
     \begin{figure}[H]%
         \centering%
-        \begin{circuitikz}[scale=0.8]%
+        \begin{circuitikz}[scale=0.6, transform shape]%
             \draw (0,0) to[resistor, l=$R_1$] (2,0) to[capacitor, l=$C_1$] (4,0) to[inductor, l=$L_1$] (6,0);%
             \draw (0,-2) to[voltage source, l=$V_{in}$] (0,0);%
             \draw (6,0) to[resistor, l=$R_2$] (6,-2) to[ground] (0,-2);%

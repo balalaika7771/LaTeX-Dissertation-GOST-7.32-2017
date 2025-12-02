@@ -1,84 +1,190 @@
+% ===== ИСТОЧНИКИ ПО ГОСТ 7.32-2017 =====
+
+% 1. КНИГИ (монографии, учебники)
 @book{example_book,
-  title={Название книги},
-  author={Фамилия, И. О. and Фамилия2, И. О.},
+  title={Основы автоматизации производственных процессов},
+  author={Ivanov, A. I. and Petrov, V. V.},
   year={2023},
-  publisher={Издательство},
-  address={Город},
-  language={russian}
+  publisher={Издательство МГУ},
+  address={Москва}
 }
 
+@book{textbook_automation,
+  title={Теория автоматического управления},
+  author={Sidorov, S. S.},
+  year={2022},
+  publisher={Энергия},
+  address={Москва}
+}
+
+% 2. СТАТЬИ В ЖУРНАЛАХ
 @article{example_article,
-  title={Название статьи},
-  author={Фамилия, И. О.},
-  journal={Название журнала},
-  volume={1},
-  number={2},
-  pages={10--20},
-  year={2023},
-  language={russian}
-}
-
-@inproceedings{example_conference,
-  title={Название доклада},
-  author={Фамилия, И. О. and Фамилия2, И. О.},
-  booktitle={Название конференции},
-  pages={100--110},
-  year={2023},
-  address={Город},
-  language={russian}
-}
-
-@online{example_website,
-  title={Название веб-ресурса},
-  author={Фамилия, И. О.},
-  url={https://example.com},
-  urldate={2023-01-01},
-  language={russian}
-}
-
-@thesis{example_thesis,
-  title={Название диссертации},
-  author={Фамилия, И. О.},
-  type={канд. дис.},
-  school={Название университета},
-  year={2023},
-  language={russian}
-}
-
-@book{knuth_art,
-  title={Искусство программирования},
-  author={Кнут, Д. Э.},
-  year={2018},
-  publisher={Вильямс},
-  address={Москва},
-  language={russian}
+  title={Современные методы автоматизации в промышленности},
+  author={Kozlov, V. I.},
+  journal={Автоматизация и современные технологии},
+  volume={15},
+  number={4},
+  pages={12--25},
+  year={2023}
 }
 
 @article{ai_survey,
-  title={Искусственный интеллект: современное состояние и перспективы развития},
-  author={Иванов, А. И. and Петров, В. В.},
+  title={Искусственный интеллект в системах управления},
+  author={Ivanov, A. I. and Petrov, V. V.},
   journal={Программирование},
   volume={44},
   number={3},
   pages={15--28},
+  year={2023}
+}
+
+% 3. МАТЕРИАЛЫ КОНФЕРЕНЦИЙ
+@inproceedings{example_conference,
+  title={Алгоритмы машинного обучения в системах автоматизации},
+  author={Smirnov, S. S.},
+  booktitle={Труды международной конференции по автоматизации},
+  pages={245--252},
   year={2023},
-  language={russian}
+  address={Санкт-Петербург}
 }
 
 @inproceedings{ml_conference,
-  title={Машинное обучение в обработке естественного языка},
-  author={Сидоров, С. С.},
-  booktitle={Труды международной конференции по искусственному интеллекту},
-  pages={245--252},
+  title={Нейронные сети в промышленной автоматизации},
+  author={Kuznetsov, K. K.},
+  booktitle={Сборник докладов научно-технической конференции},
+  pages={78--85},
   year={2023},
-  address={Санкт-Петербург},
-  language={russian}
+  address={Москва}
 }
 
-@online{github_repo,
+% 4. ДИССЕРТАЦИИ
+@phdthesis{example_thesis,
+  title={Разработка интеллектуальных систем управления технологическими процессами},
+  author={Novikov, N. N.},
+  school={Московский государственный университет},
+  year={2023}
+}
+
+@phdthesis{phd_thesis,
+  title={Методы адаптивного управления в робототехнических системах},
+  author={Volkov, V. V.},
+  school={Санкт-Петербургский политехнический университет},
+  year={2022}
+}
+
+% 5. СТАНДАРТЫ И НОРМАТИВНЫЕ ДОКУМЕНТЫ
+@misc{gost_732,
+  title={ГОСТ 7.32-2017. Отчет о научно-исследовательской работе. Структура и правила оформления},
+  author={{Госстандарт России}},
+  year={2017}
+}
+
+@misc{gost_701,
+  title={ГОСТ 19.701-90. Схемы алгоритмов, программ, данных и систем. Обозначения условные и правила выполнения},
+  author={{Госстандарт СССР}},
+  year={1990}
+}
+
+% 6. ЭЛЕКТРОННЫЕ РЕСУРСЫ
+@misc{github_repo,
   title={LaTeX шаблон для диссертации по ГОСТу},
   author={GitHub Community},
-  url={https://github.com/example/latex-thesis-template},
-  urldate={2024-01-15},
-  language={russian}
+  howpublished={URL: https://github.com/example/latex-thesis-template},
+  year={2024}
+}
+
+@misc{arxiv_paper,
+  title={Machine Learning in Industrial Automation: A Survey},
+  author={Smith, J. and Johnson, M.},
+  howpublished={URL: https://arxiv.org/abs/2023.12345},
+  year={2023}
+}
+
+% 7. ПАТЕНТЫ
+@misc{patent_example,
+  title={Способ автоматического управления технологическим процессом},
+  author={Petrov, P. P. and Sidorov, S. S.},
+  howpublished={Патент РФ № 1234567},
+  year={2023}
+}
+
+% 8. ОТЧЕТЫ О НИР
+@techreport{research_report,
+  title={Разработка интеллектуальной системы управления},
+  author={Исследовательский институт автоматизации},
+  institution={НИИ автоматизации},
+  year={2023},
+  type={Отчет о НИР},
+  number={123-2023}
+}
+
+% 9. ПЕРЕВОДНЫЕ ИЗДАНИЯ
+@book{translated_book,
+  title={Автоматизация производственных процессов},
+  author={Браун, Д.},
+  translator={Иванов, И. И.},
+  year={2022},
+  publisher={Мир},
+  address={Москва}
+}
+
+% 10. МНОГОТОМНЫЕ ИЗДАНИЯ
+@book{multivolume_book,
+  title={Справочник по автоматизации},
+  author={Smirnov, S. S.},
+  year={2023},
+  publisher={Энергия},
+  address={Москва},
+  volume={2}
+}
+
+% 11. СТАТЬИ В СБОРНИКАХ
+@inbook{collection_article,
+  title={Алгоритмы адаптивного управления},
+  author={Kozlov, K. K.},
+  booktitle={Современные проблемы автоматизации},
+  editor={Петров, П. П.},
+  pages={45--67},
+  publisher={Наука},
+  address={Москва},
+  year={2023}
+}
+
+% 12. МАТЕРИАЛЫ СИМПОЗИУМОВ
+@inproceedings{symposium,
+  title={Искусственный интеллект в промышленности 4.0},
+  author={Volkov, V. V.},
+  booktitle={Материалы международного симпозиума по промышленной автоматизации},
+  pages={123--130},
+  year={2023},
+  address={Казань}
+}
+
+% 13. ДОПОЛНИТЕЛЬНЫЕ ИСТОЧНИКИ ДЛЯ ПРИМЕРОВ
+@book{knuth_art,
+  title={Искусство программирования},
+  author={Кнут, Д.},
+  year={2021},
+  publisher={Вильямс},
+  address={Москва}
+}
+
+@article{ml_fundamentals,
+  title={Основы машинного обучения в автоматизации},
+  author={Sokolov, S. S.},
+  journal={Автоматика и телемеханика},
+  volume={12},
+  number={8},
+  pages={45--52},
+  year={2023}
+}
+
+@article{automation_review,
+  title={Обзор современных систем автоматизации},
+  author={Morozov, M. M.},
+  journal={Промышленная автоматизация},
+  volume={8},
+  number={3},
+  pages={23--31},
+  year={2023}
 }

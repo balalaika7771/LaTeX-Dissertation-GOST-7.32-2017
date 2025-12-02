@@ -3,8 +3,14 @@
 % Подключение пакетов
 \input{config/packages}
 
+% Настройки путей к источникам (можно переопределить)
+\input{config/paths}
+
 % Настройки документа
 \input{config/settings}
+
+% Подключение библиографии
+\addbibresource{\bibliographypath/references.bib}
 
 % Начало документа
 \begin{document}
@@ -30,17 +36,9 @@
 % Перечень сокращений и обозначений (по усмотрению)
 \input{abbreviations/abbreviations}
 
-% Введение
-\input{chapters/introduction}
-
-% Основная часть
-\input{chapters/chapter1}
-\input{chapters/chapter2}
-\input{chapters/chapter3}
-\input{chapters/chapter4}
-
-% Заключение
-\input{chapters/conclusion}
+% Основной текст работы (главы диссертации)
+% Список глав генерируется автоматически в build/src/chapters/chapters_list.tex
+\input{src/chapters/chapters_list}
 
 % Список использованных источников по ГОСТу
 \printbibliography[title=СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ]
@@ -48,8 +46,7 @@
 
 % Приложения
 \appendix
-\input{appendix/appendix1}
-\input{appendix/appendix2}
-\input{appendix/appendix3}
+% Список приложений генерируется автоматически в build/src/appendix/appendix_list.tex
+\input{src/appendix/appendix_list}
 
 \end{document}

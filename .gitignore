@@ -8,6 +8,7 @@
 *.log
 *.out
 *.run.xml
+*.synctex.gz
 *.toc
 *.lof
 *.lot
@@ -18,29 +19,54 @@
 *.glg
 *.glo
 *.gls
+*.idx
+*.ilg
+*.ind
 *.ist
 *.loa
-*.maf
-*.mtc
-*.mtc1
 *.nav
 *.nlo
-*.nls
 *.snm
-*.synctex.gz
-*.tdo
 *.vrb
 *.xdy
+*.tdo
+*.bbl.bak
+*.blg.bak
 
 # Папка сборки
 build/
+*.pdf
 
 # Системные файлы
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+*~
 
-# IDE файлы
-.idea/
+# Редакторы
 *.swp
 *.swo
 *~
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Python (если используются скрипты)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv
+
+# Резервные копии
+*.bak
+*.backup
+*.tmp
