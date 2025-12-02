@@ -17,24 +17,24 @@
 
 % Титульный лист (не нумеруется)
 \thispagestyle{empty}
-\input{src/title/title}
+\input{\titlepath/title}
 
 % Список исполнителей (обязательно по ГОСТ 7.32-2017)
-\input{src/executors/executors}
+\input{\executorspath/executors}
 
 % Реферат (обязательно по ГОСТ 7.32-2017, не нумеруется)
 \thispagestyle{empty}
-\input{src/abstract/abstract}
+\input{\abstractpath/abstract}
 
 % Оглавление по ГОСТу
 \tableofcontents
 \newpage
 
 % Термины и определения (по усмотрению исполнителя НИР)
-\input{src/terms/terms}
+\input{\termspath/terms}
 
 % Перечень сокращений и обозначений (по усмотрению)
-\input{src/abbreviations/abbreviations}
+\input{\abbreviationspath/abbreviations}
 
 % Основной текст работы (главы диссертации)
 % Список глав генерируется автоматически в build/src/chapters/chapters_list.tex
