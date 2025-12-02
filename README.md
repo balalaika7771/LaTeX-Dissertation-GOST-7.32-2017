@@ -98,7 +98,7 @@ def hello(name):
 
 ## Библиография и цитирование
 
-- Файл с источниками: `bibliography/references.bib`
+- Файл с источниками: `src/bibliography/references.bib`
 - В тексте: `\cite{ключ_источника}`
 - Список источников выводится автоматически в конце (см. `main.tex`).
 

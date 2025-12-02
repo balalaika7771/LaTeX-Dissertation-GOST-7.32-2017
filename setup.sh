@@ -43,7 +43,7 @@ if [ ! -f config/paths.tex ]; then
 \newcommand{\chapterspath}{src/chapters}
 \newcommand{\imagespath}{src/images}
 \newcommand{\appendixpath}{src/appendix}
-\newcommand{\bibliographypath}{bibliography}
+\newcommand{\bibliographypath}{src/bibliography}
 
 % Команды для удобного подключения файлов
 \newcommand{\inputchapter}[1]{\input{\chapterspath/#1}}

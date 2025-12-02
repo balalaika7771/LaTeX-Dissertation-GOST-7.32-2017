@@ -15,7 +15,7 @@ LATEX_FLAGS = -shell-escape -interaction=nonstopmode -file-line-error -halt-on-e
 .PHONY: all clean view help quick copy-sources
 
 # Зависимости для копирования
-SRC_DIRS = src bibliography config title executors abstract terms abbreviations
+SRC_DIRS = src config
 
 # Файлы с главами и приложениями (сканирование папок src)
 CHAPTER_TEX := $(wildcard src/chapters/*.tex)
