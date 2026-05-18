@@ -25,7 +25,7 @@
 % Для разделов используем только номер без слова "РАЗДЕЛ" или "ГЛАВА"
 \titleformat{\chapter}[display]
 {\normalfont\bfseries\centering}
-{\thechapter}{20pt}{\Large\MakeUppercase}
+{\thechapter}{20pt}{\MakeUppercase}
 
 \titleformat{\section}
 {\normalfont\bfseries\centering}
@@ -60,7 +60,7 @@
 \DeclareFieldFormat{textcite}{[#1]}
 \DeclareFieldFormat{labelnumberwidth}{#1.}
 \setlength{\biblabelsep}{0.5em}
-\renewcommand*{\bibfont}{\small}
+% \renewcommand*{\bibfont}{\small}
 \setlength{\bibhang}{1.25cm}
 
 % Настройки гиперссылок
@@ -87,7 +87,6 @@
 
 % Настройки подписей к рисункам и таблицам по ГОСТ 7.32-2017
 \captionsetup[figure]{
-    font=small,
     justification=centering,
     singlelinecheck=false,
     skip=0pt,
@@ -97,7 +96,6 @@
 }
 
 \captionsetup[table]{
-    font=small,
     justification=raggedright,
     singlelinecheck=false,
     skip=0pt,
@@ -134,12 +132,12 @@
 % Настройка шрифта для verbatim (используем доступный моноширинный шрифт)
 % Переопределяем шрифт verbatim для использования ttfamily вместо Courier
 \makeatletter
-\def\verbatim@font{\ttfamily\small}
+\def\verbatim@font{\ttfamily}
 \makeatother
 
 % Окружение для форматированного verbatim с рамкой
 \usepackage{fancyvrb}
-\DefineVerbatimEnvironment{codeverbatim}{Verbatim}{frame=single, framesep=2mm, fontsize=\small, numbers=left, numbersep=3pt}
+\DefineVerbatimEnvironment{codeverbatim}{Verbatim}{frame=single, framesep=2mm, numbers=left, numbersep=3pt}
 
 % Настройки для листингов кода (единый стиль)
 \lstset{
@@ -155,7 +153,7 @@
     showstringspaces=false,
     showtabs=false,
     tabsize=2,
-    basicstyle=\small\fontfamily{cmtt}\selectfont, % Use cmtt for better compatibility
+    basicstyle=\fontfamily{cmtt}\selectfont, % Use cmtt for better compatibility
     keywordstyle=\color{blue},
     commentstyle=\color{green!60!black},
     stringstyle=\color{red},
@@ -173,7 +171,6 @@
     format=hang,
     justification=raggedright,
     singlelinecheck=false,
-    font=small,
     labelfont=bf,
     textfont=normalfont,
     skip=10pt,
