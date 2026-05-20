@@ -15,6 +15,18 @@
 % Начало документа
 \begin{document}
 
+% Титульный лист (не нумеруется, но включается в нумерацию)
+\thispagestyle{empty}
+\input{\titlepath/title}
+\setcounter{page}{2}
+\newpage
+
+% Список исполнителей
+\input{\executorspath/executors}
+
+% Реферат
+\input{\abstractpath/abstract}
+
 % Оглавление по ГОСТу
 \tableofcontents
 \newpage

@@ -109,12 +109,12 @@
 \renewcommand{\tablename}{Таблица}
 
 % Настройка формата подписи к рисунку по ГОСТ 7.32-2017
-\DeclareCaptionFormat{gostfigure}{#1#2 — #3}
-\captionsetup[figure]{format=gostfigure}
+\DeclareCaptionFormat{gostfigure}{#1 #2 — #3}
+\captionsetup[figure]{format=gostfigure, labelsep=none}
 
 % Настройка формата подписи к таблице по ГОСТ 7.32-2017
-\DeclareCaptionFormat{gosttable}{#1#2 — #3}
-\captionsetup[table]{format=gosttable}
+\DeclareCaptionFormat{gosttable}{#1 #2 — #3}
+\captionsetup[table]{format=gosttable, labelsep=none}
 
 % Настройка переноса таблиц с заголовком "Продолжение таблицы X"
 % \usepackage{longtable} % уже загружен в packages.tex
