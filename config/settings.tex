@@ -92,7 +92,8 @@
     skip=0pt,
     belowskip=0pt,
     aboveskip=0pt,
-    hypcap=false
+    hypcap=false,
+    parindent=0pt
 }
 
 \captionsetup[table]{
@@ -101,12 +102,14 @@
     skip=0pt,
     belowskip=0pt,
     aboveskip=0pt,
-    hypcap=false
+    hypcap=false,
+    parindent=0pt
 }
 
 % Переопределяем формат подписей для соответствия ГОСТу
-\renewcommand{\figurename}{Рисунок}
-\renewcommand{\tablename}{Таблица}
+% Используем \addto\captionsrussian, т.к. babel переопределяет имена после \begin{document}
+\addto\captionsrussian{\renewcommand{\figurename}{Рисунок}}
+\addto\captionsrussian{\renewcommand{\tablename}{Таблица}}
 
 % Настройка формата подписи к рисунку по ГОСТ 7.32-2017
 \DeclareCaptionFormat{gostfigure}{#1 #2 — #3}
@@ -207,6 +210,19 @@
 % Настройки приложений
 \renewcommand{\appendixname}{Приложение}
 \renewcommand{\appendixpagename}{Приложения}
+
+% Нумерация рисунков и таблиц в приложениях по ГОСТ 7.32-2017 (п. 6.5.5, 6.6.4)
+% Рисунок А.1, Таблица А.1 и т.д.
+\makeatletter
+\AtBeginDocument{%
+    \g@addto@macro\appendix{%
+        \renewcommand{\thefigure}{\thechapter.\arabic{figure}}%
+        \renewcommand{\thetable}{\thechapter.\arabic{table}}%
+        \setcounter{figure}{0}%
+        \setcounter{table}{0}%
+    }%
+}
+\makeatother
 
 % ===== АВТОМАТИЧЕСКИЕ ПРАВИЛА ГОСТ =====
 
