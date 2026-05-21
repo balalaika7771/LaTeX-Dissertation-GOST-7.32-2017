@@ -35,7 +35,8 @@ jobs:
             python3-pip \
             unzip \
             libreoffice \
-            lua5.3
+            lua5.3 \
+            poppler-utils
           
           # latexpand должен быть доступен через texlive-extra-utils
           # Проверяем наличие latexpand
@@ -45,7 +46,11 @@ jobs:
 
       - name: Generate chapter lists and build PDF
         run: |
-          make
+          make pdf
+
+      - name: Merge frontmatter with main PDF
+        run: |
+          bash scripts/merge_diploma.sh
 
       - name: Convert PDF to DOCX via API
         env:
@@ -258,7 +263,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dissertation-pdf
-          path: build/main.pdf
+          path: build/final.pdf
 
       - name: Upload Word artifact
         uses: actions/upload-artifact@v4
@@ -276,7 +281,7 @@ jobs:
           draft: false
           prerelease: true
           files: |
-            build/main.pdf
+            build/final.pdf
             build/main.docx
 
       - name: Upload to Yandex Disk
@@ -397,7 +402,7 @@ jobs:
           ensure_folder "$BUILD_FOLDER"
           
           # Загружаем PDF (мы находимся в корне репозитория)
-          upload_file "build/main.pdf" "${BUILD_FOLDER}/main.pdf"
+          upload_file "build/final.pdf" "${BUILD_FOLDER}/final.pdf"
           
           # Загружаем Word (если создан)
           if [ -f "build/main.docx" ]; then

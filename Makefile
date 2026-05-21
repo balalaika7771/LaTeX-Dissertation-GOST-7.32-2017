@@ -12,7 +12,7 @@ BUILD_DIR = build
 LATEX_FLAGS = -shell-escape -interaction=nonstopmode -file-line-error -halt-on-error
 
 # Цели по умолчанию
-.PHONY: all pdf clean view help quick copy-sources docx
+.PHONY: all pdf clean view help quick copy-sources docx final
 
 # Зависимости для копирования
 SRC_DIRS = src config
@@ -26,6 +26,10 @@ all: pdf docx
 
 # Компиляция только PDF
 pdf: $(BUILD_DIR)/$(MAIN).pdf
+
+# Финальная сборка: PDF + объединение с frontmatter
+final: $(BUILD_DIR)/$(MAIN).pdf
+	@bash scripts/merge_diploma.sh
 
 # Копирование источников (только если изменились)
 copy-sources:
