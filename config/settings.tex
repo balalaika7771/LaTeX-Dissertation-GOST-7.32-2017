@@ -27,9 +27,9 @@
 % Настройки заголовков по ГОСТу 7.32-2017 и требованиям РУДН
 % Заголовки структурных элементов - по центру, прописными буквами, без точки в конце
 % Для разделов используем только номер без слова "РАЗДЕЛ" или "ГЛАВА"
-\titleformat{\chapter}[display]
+\titleformat{\chapter}[block]
 {\normalfont\bfseries\centering}
-{\thechapter}{20pt}{\MakeUppercase}
+{\thechapter.}{1em}{\MakeUppercase}
 
 \titleformat{\section}
 {\normalfont\bfseries\centering}
@@ -92,6 +92,7 @@
 \makeatletter
 \@removefromreset{figure}{chapter}
 \@removefromreset{table}{chapter}
+\@removefromreset{equation}{chapter}
 \makeatother
 \renewcommand{\thefigure}{\arabic{figure}}
 \renewcommand{\thetable}{\arabic{table}}
