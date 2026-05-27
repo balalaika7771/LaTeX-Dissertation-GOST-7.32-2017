@@ -9,8 +9,8 @@
 \centering
 \caption{Архитектурные решения проектируемой системы}
 \label{tab:architecture_decisions}
-\small
-\begin{tabularx}{\textwidth}{|p{2.2cm}|p{2.2cm}|p{2cm}|X|}
+\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1.0}
+\begin{tabularx}{\textwidth}{|p{2.5cm}|p{2.5cm}|p{2cm}|>{\raggedright\arraybackslash}X|}
 \hline
 \textbf{Измерение} & \textbf{Альтернативы} & \textbf{Выбор} & \textbf{Обоснование} \\
 \hline
@@ -56,8 +56,7 @@ M^* = \arg\min_{M} \sum_{(s, d) \in \mathcal{D}_{\text{train}}} L(M(s), d)
 \centering
 \caption{Сравнение подходов к диагностике}
 \label{tab:diagnosis_approaches}
-\small
-\begin{tabularx}{\textwidth}{|p{2.5cm}|X|X|X|}
+\begin{tabularx}{\textwidth}{|p{2.5cm}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
 \hline
 \textbf{Критерий} & \textbf{Rule-based} & \textbf{ML-based} & \textbf{Гибрид (выбор)} \\
 \hline

@@ -10,8 +10,7 @@
 \centering
 \caption{Целевые области применения и ожидаемый эффект}
 \label{tab:application_areas}
-\small
-\begin{tabular}{|p{2.8cm}|p{3.5cm}|p{2.5cm}|p{3cm}|}
+\begin{tabular}{|p{2.8cm}|p{3.5cm}|p{2.5cm}|p{3.5cm}|}
 \hline
 \textbf{Область} & \textbf{Типовые инциденты} & \textbf{Стоимость простоя} & \textbf{Ожидаемый эффект} \\
 \hline
@@ -56,10 +55,10 @@ E-commerce & Недоступность каталога, сбои оплаты 
 \centering
 \caption{Масштабируемость: потребление ресурсов при росте числа сервисов}
 \label{tab:scalability}
-\small
+\setlength{\tabcolsep}{3pt}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
-\textbf{Сервисов} & \textbf{Агентов} & \textbf{CPU, cores} & \textbf{RAM, ГБ} & \textbf{Latency диагн., с} \\
+\textbf{Сервисов} & \textbf{Агентов} & \textbf{CPU, ядра} & \textbf{RAM, ГБ} & \textbf{Диагн., с} \\
 \hline
 10 & 1 & 0.5 & 1.4 & 3.2 \\
 \hline
@@ -95,8 +94,7 @@ E-commerce & Недоступность каталога, сбои оплаты 
 \centering
 \caption{Параметры расчёта экономического эффекта}
 \label{tab:economic_params}
-\small
-\begin{tabular}{|p{5cm}|c|p{4cm}|}
+\begin{tabular}{|p{6cm}|c|p{5.5cm}|}
 \hline
 \textbf{Параметр} & \textbf{Значение} & \textbf{Источник} \\
 \hline
@@ -146,16 +144,16 @@ T_{\text{payback}} = \frac{C_{\text{dev}} + C_{\text{infra}}}{\text{Эконом
 \centering
 \caption{Экономическая эффективность при различной стоимости простоя}
 \label{tab:roi_scenarios}
-\small
-\begin{tabular}{|p{3cm}|c|c|c|c|}
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{|p{3.5cm}|c|c|c|c|}
 \hline
 \textbf{Сценарий} & \textbf{$C_{\min}$, USD} & \textbf{Экономия/год} & \textbf{ROI} & \textbf{Окупаемость} \\
 \hline
-Консервативный & 100 & \$849\,600 & 23 & 5.4 мес \\
+Консервативный & 100 & \$0.85 млн & 23 & 5.4 мес \\
 \hline
-\textbf{Базовый} & \textbf{500} & \textbf{\$4\,248\,000} & \textbf{120} & \textbf{1.1 мес} \\
+\textbf{Базовый} & \textbf{500} & \textbf{\$4.25 млн} & \textbf{120} & \textbf{1.1 мес} \\
 \hline
-Оптимистичный & 5\,000 & \$42\,480\,000 & 1\,213 & 3 дня \\
+Оптимистичный & 5\,000 & \$42.5 млн & 1\,213 & 3 дня \\
 \hline
 \end{tabular}
 \end{table}
@@ -191,7 +189,7 @@ T_{\text{payback}} = \frac{C_{\text{dev}} + C_{\text{infra}}}{\text{Эконом
 \legend{240 инц./год, 120 инц./год, 48 инц./год}
 \end{axis}
 \end{tikzpicture}
-\caption{Анализ чувствительности: зависимость экономии от стоимости простоя}
+\caption{Анализ чувствительности экономии к стоимости простоя}
 \label{fig:sensitivity}
 \end{figure}
 

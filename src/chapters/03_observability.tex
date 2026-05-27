@@ -46,18 +46,20 @@ s_i = (\text{service}_i, t_{\text{start},i}, t_{\text{end},i}, \text{status}_i, 
 \centering
 \caption{Сравнение типов данных наблюдаемости для задач агента}
 \label{tab:observability_pillars}
-\small
-\begin{tabular}{|p{1.8cm}|p{2.5cm}|p{2.5cm}|p{4cm}|}
+\setlength{\tabcolsep}{2pt}
+\begin{sloppypar}
+\begin{tabular}{@{}|>{\raggedright\arraybackslash}p{2cm}|>{\raggedright\arraybackslash}p{3.5cm}|>{\raggedright\arraybackslash}p{3.5cm}|>{\raggedright\arraybackslash}p{7cm}|@{}}
 \hline
 \textbf{Тип} & \textbf{Сильные стороны} & \textbf{Ограничения} & \textbf{Использование в системе} \\
 \hline
-Метрики & Числовые, агрегируемые, малый объём & Потеря контекста при агрегации & LSTM Anomaly Detector: обнаружение аномалий \\
+Метрики & Числовые, агрег., малый объём & Потеря контекста при агрегации & LSTM Detector: обнаружение \\
 \hline
-Логи & Богатый контекст, семантика ошибок & Неструктурированность, большой объём & LLM Agent: анализ неструктурированных данных \\
+Логи & Богатый контекст & Неформат., большой объём & LLM Agent: анализ логов \\
 \hline
-Трейсы & Топология зависимостей, латентность по сервисам & Sampling снижает покрытие & Diagnostic Engine: построение причинного графа \\
+Трейсы & Топология, латентность & Sampling, низкое покрытие & Engine: причинный граф \\
 \hline
 \end{tabular}
+\end{sloppypar}
 \end{table}
 
 \section{Причинно-следственные графы}

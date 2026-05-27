@@ -56,7 +56,7 @@ d = (\text{timestamp}, \text{source}, \text{type}, \text{value}, \text{metadata}
 \label{eq:unified_data_model}
 \end{equation}
 
-Каждый источник нормализуется: $D_{\text{normalized}} = \bigcup_{i=1}^{n} f_{\text{normalize},i}(D_i)$. Время сбора определяется самым медленным источником: $T_{\text{collection}} = \max_{i} T_{\text{collect},i}$.
+Каждый источник нормализуется: $D_{\text{normalized}} = \bigcup_{i=1}^{n} f_{\text{normalize},i}(D_i)$. \linebreak Время сбора определяется самым медленным источником: $T_{\text{collection}} = \max_{i} T_{\text{collect},i}$.
 
 \subsection{Anomaly Detector}
 
@@ -82,7 +82,7 @@ d = (\text{timestamp}, \text{source}, \text{type}, \text{value}, \text{metadata}
     \text{Orchestrator Decision},
       & \text{если } \text{confidence}_{\text{orch}} > \theta, \\
     \text{LLM Recommendation},
-      & \text{если } \text{confidence}_{\text{llm}} > \theta \land \text{needs\_human\_review}, \\
+      & \text{если } \text{conf}_{\text{llm}} > \theta \land \text{review}, \\
     \text{Human Review},
       & \text{иначе}.
   \end{cases}

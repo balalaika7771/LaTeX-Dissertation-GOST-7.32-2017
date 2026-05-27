@@ -26,7 +26,7 @@ z = \frac{x - \mu}{\sigma}, \quad |z| > k \Rightarrow \text{аномалия}, \
 
 \section{Временные ряды и ARIMA}
 
-Метрики образуют нестационарные временные ряды \cite{time_series_anomaly,acm_anomaly_detection}. ARIMA$(p,d,q)$ моделирует автокорреляционную структуру \cite{hastie_elements}:
+Метрики образуют нестационарные временные ряды \cite{time_series_anomaly,acm_anomaly_detection}. \linebreak ARIMA$(p,d,q)$ моделирует автокорреляционную структуру \cite{hastie_elements}:
 \begin{equation}
 (1 - \sum_{i=1}^{p} \phi_i B^i)(1-B)^d y_t = (1 + \sum_{i=1}^{q} \theta_i B^i)\epsilon_t
 \label{eq:arima}
@@ -77,8 +77,8 @@ h_t &= \sigma(W_o [h_{t-1}, x_t] + b_o) \odot \tanh(C_t) & \text{(скрытое
 \centering
 \caption{Сравнение методов обнаружения аномалий}
 \label{tab:anomaly_methods_comparison}
-\small
-\begin{tabular}{|p{2.5cm}|p{1.8cm}|p{1.8cm}|p{1.8cm}|p{2.5cm}|}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{|p{2.8cm}|p{2.5cm}|p{3cm}|p{2.5cm}|p{2.5cm}|}
 \hline
 \textbf{Метод} & \textbf{Многомер\-ность} & \textbf{Временные зависим.} & \textbf{Нелиней\-ность} & \textbf{Сложность} \\
 \hline

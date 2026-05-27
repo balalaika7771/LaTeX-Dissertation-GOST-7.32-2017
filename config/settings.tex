@@ -14,6 +14,10 @@
 % Межстрочный интервал 1.5 по ГОСТу
 \onehalfspacing
 
+% Дополнительная растяжимость и толерантность для предотвращения Overfull hbox
+\tolerance=1000
+\emergencystretch=3em
+
 % Отступ первой строки абзаца 1.25 см по ГОСТу
 \setlength{\parindent}{1.25cm}
 
@@ -63,6 +67,10 @@
 % \renewcommand*{\bibfont}{\small}
 \setlength{\bibhang}{1.25cm}
 
+% Перенос длинных URL в библиографии
+\DeclareFieldFormat*{url}{\url{#1}}
+\appto{\bibsetup}{\sloppy}
+
 % Настройки гиперссылок
 \hypersetup{
     colorlinks=true,
@@ -72,8 +80,12 @@
     citecolor=black,
     bookmarksnumbered=true,
     bookmarksopen=true,
-    pdfstartview=FitH
+    pdfstartview=FitH,
+    breaklinks=true
 }
+
+% Разрешить переносы в URL на любом символе
+\def\UrlBreaks{\do\/\do-\do_\do.\do=\do?\do\&\do\%\do\#\do\~\do\\}
 
 % Настройки нумерации по ГОСТу 7.32-2017
 % Глобальная нумерация рисунков и таблиц по всей диссертации
@@ -145,7 +157,7 @@
 % Настройки для листингов кода (единый стиль)
 \lstset{
     breaklines=true,
-    breakatwhitespace=true,
+    breakatwhitespace=false,
     breakautoindent=true,
     postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
     frame=single,
@@ -156,7 +168,8 @@
     showstringspaces=false,
     showtabs=false,
     tabsize=2,
-    basicstyle=\fontfamily{cmtt}\selectfont, % Use cmtt for better compatibility
+    basicstyle=\small\fontfamily{cmtt}\selectfont, % ~12pt (GOST min), more compact
+    columns=flexible,
     keywordstyle=\color{blue},
     commentstyle=\color{green!60!black},
     stringstyle=\color{red},
