@@ -36,6 +36,7 @@
 # Папка сборки
 build/
 *.pdf
+!assets/frontmatter/*.pdf
 
 # Системные файлы
 .DS_Store
